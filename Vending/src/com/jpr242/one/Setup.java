@@ -78,7 +78,7 @@ public class Setup {
 			oOS.close();
 		} catch (IOException e) {
 			System.err.println("Error, Unable to Create Folder.");
-			System.err.println(e.getStackTrace());
+			System.err.println(e.getMessage());
 		}
 		
 	}

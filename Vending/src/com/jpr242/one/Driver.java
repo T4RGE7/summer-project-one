@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * 
@@ -16,11 +18,91 @@ import java.nio.file.Paths;
 public class Driver {
 	
 	private static Container container;
+	private static ArrayList<VendingMachine> machines;
+	private static VendingMachine singleMachine;
+	private static ArrayList<Dispenser> dispensers;
+	private static Dispenser singleDispenser;
+	private static FoodInformation foodItem;
 
 	public static void main(String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		
+		machines = null;
+		singleMachine = null;
+		dispensers = null;
+		singleDispenser = null;
+		foodItem = null;
 		container = openSave();
+		
+		machines = container.getMachines();
+		
+		boolean localRunning = true;
+		
 		System.out.println("Welcome to the Vending Machines!");
-		container.getMachines();
+		
+		while (localRunning) {
+			if (foodItem != null) {
+				// item trying to purchase
+				do{
+					System.out.print("Wound you like to purchase the " + foodItem.getName() + " (buy), look at its nutrition information (look) or go back (back)");
+					String tempInput = stdin.nextLine();
+					
+					if (tempInput.equalsIgnoreCase("buy")) {
+						
+					} else if (tempInput.equalsIgnoreCase("look")) {
+						System.out.println(foodItem.getNutritionInfo() + ", $" + singleDispenser.getPrice());
+					}
+				} while (true);
+				
+			} else if (singleMachine != null) {
+				// picking dispenser
+				boolean goBack = false;
+				do {
+					System.out.print("Would you like to insert money (insert) or look at the items avalible (look) or select an item (select)?: ");
+					String temp = stdin.nextLine();
+					
+					if (temp.equalsIgnoreCase("insert")) {
+						System.out.print("How much money would you like to insert?: ");
+						double tempInsert = stdin.nextDouble();
+						stdin.nextLine();
+						
+						if (tempInsert > 0) {
+							singleMachine.addMoney(tempInsert);
+						}
+					} else if (temp.equalsIgnoreCase("look")) {
+						System.out.println(singleMachine.displayDispensers());
+					} else if (temp.equalsIgnoreCase("select")) {
+						System.out.print("Which item would you like to select?: ");
+						int tempSelection = stdin.nextInt();
+						stdin.nextLine();
+						try {
+							singleDispenser = singleMachine.getDispensers().get(tempSelection - 1);
+							foodItem = singleDispenser.getDispenserContents().peekFirst();
+						} catch (IndexOutOfBoundsException e) {
+							System.err.println("Invalid Selection, Try Again.");
+						}
+					}
+				} while (foodItem == null && !goBack);
+			} else if (machines != null) {
+				for (int i = 0; i < machines.size(); i++) {
+					System.out.println("Machine " + (i + 1) + ") " + machines.get(i).summary());
+				}
+					do {
+						System.out.print("Which Machine would you like to look at? (1-" + (machines.size()) + "): ");
+						int tempSelection = stdin.nextInt();
+						stdin.nextLine();
+						try {
+							singleMachine = machines.get(tempSelection - 1);
+						} catch (IndexOutOfBoundsException e) {
+							System.err.println("Invalid Selection, Try Again.");
+							singleMachine = null;
+						}
+					} while (singleMachine == null);
+					
+			}
+		}
+		
+		
 	}
 	
 	public static Container openSave() {

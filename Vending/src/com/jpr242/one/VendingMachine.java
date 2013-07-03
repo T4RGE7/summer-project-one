@@ -31,6 +31,42 @@ public class VendingMachine implements Serializable{
 			this.dispensers.add(new Dispenser(-1));
 		}
 	}
+	
+	public String summary() {
+		String toReturn = "";
+		
+		int drinkCount, snackCount;
+		drinkCount = snackCount = 0;
+
+		for (Dispenser tempDispenser : this.dispensers) {
+			if (tempDispenser.getType().equalsIgnoreCase("drink") && !tempDispenser.getDispenserContents().isEmpty()) {
+				drinkCount++;
+			} else if (tempDispenser.getType().equalsIgnoreCase("snack") && !tempDispenser.getDispenserContents().isEmpty()) {
+				snackCount++;
+			}
+		}
+		
+		toReturn += drinkCount + " Drinks and " + snackCount + " Snacks Avalible";
+		
+		return toReturn;
+	}
+	
+	public String displayDispensers() {
+		String toReturn = "";
+		
+		for (int i = 0; i < this.dispensers.size(); i++) {
+			Dispenser tempDispenser = this.dispensers.get(i);
+			if (!tempDispenser.getDispenserContents().isEmpty()) {
+				toReturn += (i + 1) + ") " + tempDispenser.getDispenserContents().peekFirst().name + ", " + tempDispenser.getType() + "\n" ;
+			}
+		}
+		
+		return toReturn;
+	}
+	
+	public void addMoney(double insert) {
+		this.moneyIn += insert;
+	}
 
 
 	public double getMoneyIn() {
@@ -61,6 +97,8 @@ public class VendingMachine implements Serializable{
 	public void setOn(boolean on) {
 		this.on = on;
 	}
+	
+	
 	
 	
 	
