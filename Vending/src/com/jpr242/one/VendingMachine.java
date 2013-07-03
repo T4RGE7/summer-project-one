@@ -1,7 +1,10 @@
 package com.jpr242.one;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -56,7 +59,18 @@ public class VendingMachine implements Serializable{
 		return toReturn;
 	}
 	
-	
+	public void printReciept(String info) {
+		String fileName = new Date().toString().replace(":", "_").replace(" ", "_");
+		PrintWriter printer;
+		try {
+			printer = new PrintWriter(fileName);
+			printer.println(info);
+			printer.close();
+			this.recieptNames.add(fileName);
+		} catch (FileNotFoundException e) {
+			System.err.println("Unable to Write Reciept");
+		}
+	}
 	
 	public boolean purchase(int dispenserNumber) {
 		boolean toReturn = false;
@@ -64,10 +78,12 @@ public class VendingMachine implements Serializable{
 		
 		if (!this.dispensers.get(dispenserNumber).getDispenserContents().isEmpty()){
 			if (this.moneyIn - this.dispensers.get(dispenserNumber).getPrice() >= 0) {
-				this.dispensers.get(dispenserNumber).getDispenserContents().pollFirst();
+				FoodInformation temp = this.dispensers.get(dispenserNumber).getDispenserContents().pollFirst();
 				toReturn = true;
 				//throw Exception;
 				this.moneyIn -= this.dispensers.get(dispenserNumber).getPrice();
+				String toPrint = "";
+				toPrint +=
 			} else {
 				System.err.println("Error Insufficient Funds");
 			}
