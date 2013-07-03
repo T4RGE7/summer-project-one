@@ -13,6 +13,8 @@ import java.util.Scanner;
 
 public class Setup {
 	
+	private Container container;
+	
 	public static void main(String[] args) {
 		int temp = Integer.valueOf(args[0]);
 		int numberOfMachines = (temp <= 2 ? (new Random().nextInt(5) + 2) : temp);

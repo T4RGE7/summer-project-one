@@ -20,7 +20,7 @@ public class VendingMachine {
 		this.moneyIn = 0;
 		this.dispensers = new ArrayList<Dispenser>();
 		
-		int numOfDispensers = new Random().nextInt(5) + 1;
+		int numOfDispensers = new Random().nextInt(5) + 20;
 		
 		for (int i = 0; i < numOfDispensers; i++) {
 			this.dispensers.add(new Dispenser(-1));

@@ -18,6 +18,8 @@ public class Container implements Serializable{
 	
 	public void addVendingMachine() {
 		
+		machines.add(new VendingMachine());
+		
 	}
 	
 	public void addRecieptFileName(String fileName) {

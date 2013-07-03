@@ -78,7 +78,7 @@ public JimsCanvas(int w, int h, GUIDriver field, int widthOffset) {
 		boolean firstCall = (lastTime == -1L);
 		long elapsedTime = System.nanoTime() - lastTime;
 		lastTime = System.nanoTime();
-		graphics.setColor(Color.gray);
+		graphics.setColor(Color.cyan);
 		graphics.fillRect(0, 0, width, height);
 		graphics.setColor(Color.white);
 		field.draw((Graphics2D) graphics, (firstCall ? 0.0f
