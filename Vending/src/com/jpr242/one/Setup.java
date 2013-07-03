@@ -51,10 +51,7 @@ public class Setup {
 		
 		container = new Container();
 		
-		for (int i = 0; i < numberOfMachines; i++) {
-			container.addVendingMachine(i);
-		}
-		
+
 		boolean found = false;
 		int count = 0;
 		
@@ -69,6 +66,10 @@ public class Setup {
 		}
 		
 	//	Path target = Paths.get("run" + count);
+		for (int i = 0; i < numberOfMachines; i++) {
+			container.addVendingMachine(i, count);
+		}
+		
 		try {
 			//temp?
 			Runtime.getRuntime().exec("mkdir run" + count);

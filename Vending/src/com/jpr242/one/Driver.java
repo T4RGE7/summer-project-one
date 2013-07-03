@@ -43,15 +43,15 @@ public class Driver {
 		
 		System.out.println("Welcome to the Vending Machines!");
 		
-		try {
-			if (true) {
-				throw new IOException();
-			}
-			
-		} catch (IOException e) {
-			System.err.println("caught");
-		}
-		
+//		try {
+//			if (true) {
+//				throw new IOException();
+//			}
+//			
+//		} catch (IOException e) {
+//			System.err.println("caught");
+//		}
+//		
 		
 	main:while (localRunning) {
 			if (foodItem != null) {

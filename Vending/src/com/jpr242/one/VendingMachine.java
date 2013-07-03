@@ -23,9 +23,11 @@ public class VendingMachine implements Serializable{
 	private boolean on;
 	private ArrayList<String> recieptNames;
 	private int id;
+	private int runNumber;
 	
 	
-	public VendingMachine(int id) {
+	public VendingMachine(int id, int runNumber) {
+		this.runNumber = runNumber;
 		this.id = id;
 		this.on = true;
 		this.moneyIn = 0;
@@ -79,11 +81,12 @@ public class VendingMachine implements Serializable{
 		
 		
 		if (!this.dispensers.get(dispenserNumber).getDispenserContents().isEmpty()){
-			if (this.moneyIn - this.dispensers.get(dispenserNumber).getPrice() >= 0) {
+			double price;
+			if (this.moneyIn - (price = this.dispensers.get(dispenserNumber).getPrice()) >= 0) {
 				FoodInformation temp = this.dispensers.get(dispenserNumber).getDispenserContents().pollFirst();
 				toReturn = true;
 				//throw Exception;
-				this.moneyIn -= this.dispensers.get(dispenserNumber).getPrice();
+				this.moneyIn -= price;
 				String toPrint = "";
 				//toPrint += new Date().toString() + "\n";
 				toPrint += "Machine " + dispenserNumber + "\n";
@@ -91,7 +94,11 @@ public class VendingMachine implements Serializable{
 				toPrint += temp.getName() + "\t$" + this.dispensers.get(dispenserNumber).getPrice() + "\n\n";
 				toPrint += "Money in:\t$" + this.moneyIn;
 				toPrint += "Total:\t$" + this.dispensers.get(dispenserNumber).getPrice();
-				toPrint += "Change:\t$" + (this.moneyIn-this.dispensers.get(dispenserNumber).getPrice());
+				toPrint += "Change:\t$" + (this.moneyIn - price);
+				printReciept(toPrint);
+				if (this.moneyIn > price) {
+					System.out.println("Your change is: $" + (this.moneyIn - price));
+				}
 			} else {
 				System.err.println("Error Insufficient Funds");
 			}
@@ -119,6 +126,11 @@ public class VendingMachine implements Serializable{
 	
 	public void addMoney(double insert) {
 		this.moneyIn += insert;
+	}
+	
+	public void turnOff() {
+		this.on = false;
+		
 	}
 
 
