@@ -1,11 +1,18 @@
 package com.jpr242.one;
+
+import java.io.Serializable;
+
 /**
  * 
  * @author James Roberts jpr242
  *
  */
-public class FoodInformation {
+public class FoodInformation implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6889449006114452885L;
 	protected String name;
 	protected String type;
 	//private double price;

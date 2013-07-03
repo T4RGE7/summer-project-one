@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FoodList implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7227044176959713945L;
 	private ArrayList<String[]> snacks;
 	private ArrayList<String[]> drinks;
 	

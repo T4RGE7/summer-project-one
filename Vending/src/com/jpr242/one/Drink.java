@@ -1,10 +1,18 @@
 package com.jpr242.one;
+
+import java.io.Serializable;
+
 /**
  * 
  * @author James Roberts jpr242
  *
  */
-public class Drink extends FoodInformation {
+public class Drink extends FoodInformation implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1347050739095760055L;
 
 	public Drink(String[] input, long expireTime) {
 		if (input.length == 6) {

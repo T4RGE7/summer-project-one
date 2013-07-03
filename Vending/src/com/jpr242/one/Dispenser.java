@@ -9,12 +9,17 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.LinkedBlockingDeque;
 
 
-public class Dispenser {
+public class Dispenser implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8881136851858909286L;
 	private LinkedBlockingDeque<FoodInformation> dispenserContents;	
 	private double price;
 	private String[] infoString;

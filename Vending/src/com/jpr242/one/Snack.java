@@ -1,12 +1,22 @@
 package com.jpr242.one;
+
+import java.io.Serializable;
+
 /**
  * 
  * @author James Roberts jpr242
  *
  */
 
-public class Snack extends FoodInformation{
+public class Snack extends FoodInformation implements Serializable{
 	
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 388678973292073885L;
+
 	public Snack(String[] input, long expireTime) {
 		if (input.length == 6) {
 			this.name = input[0];
