@@ -60,10 +60,12 @@ public class VendingMachine implements Serializable{
 	}
 	
 	public void printReciept(String info) {
-		String fileName = new Date().toString().replace(":", "_").replace(" ", "_");
+		String date = new Date().toString();
+		String fileName = date.replace(":", "_").replace(" ", "_");
 		PrintWriter printer;
 		try {
 			printer = new PrintWriter(fileName);
+			printer.println(date);
 			printer.println(info);
 			printer.close();
 			this.recieptNames.add(fileName);
@@ -83,7 +85,13 @@ public class VendingMachine implements Serializable{
 				//throw Exception;
 				this.moneyIn -= this.dispensers.get(dispenserNumber).getPrice();
 				String toPrint = "";
-				toPrint +=
+				//toPrint += new Date().toString() + "\n";
+				toPrint += "Machine " + dispenserNumber + "\n";
+				toPrint += "Item Purchased\tSubtotal\n";
+				toPrint += temp.getName() + "\t$" + this.dispensers.get(dispenserNumber).getPrice() + "\n\n";
+				toPrint += "Money in:\t$" + this.moneyIn;
+				toPrint += "Total:\t$" + this.dispensers.get(dispenserNumber).getPrice();
+				toPrint += "Change:\t$" + (this.moneyIn-this.dispensers.get(dispenserNumber).getPrice());
 			} else {
 				System.err.println("Error Insufficient Funds");
 			}
