@@ -14,19 +14,41 @@ import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.attribute.FileAttribute;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Setup {
 	
 	private static Container container;
+	private static FoodList foodList;
 	
 	public static void main(String[] args) {
-		int temp = (args[0] != null ? Integer.valueOf(args[0]) : -1 );
+		int temp = -1;
+		
+		for (int i = 0; i < args.length; i++) {
+			System.out.println(args[0]);
+		}
+		
+		if (args != null && args.length > 0) {
+			temp = Integer.valueOf(args[0]);
+		}
+		
 		int numberOfMachines = (temp <= 2 ? (new Random().nextInt(5) + 2) : temp);
 		
 		downloadLists();
+		//make food list
+		foodList = new FoodList();
+		//write foodList
+		
+		try {
+			ObjectOutputStream foodListOut = new ObjectOutputStream(new FileOutputStream("foodList.dat"));
+			foodListOut.writeObject(foodList);
+			foodListOut.close();
+		} catch (IOException e) {
+			System.err.println("Unable to Create Food List");
+		}
+		
+		
 		container = new Container();
 		
 		for (int i = 0; i < numberOfMachines; i++) {
@@ -38,22 +60,25 @@ public class Setup {
 		
 		while (!found){
 			Path target = Paths.get("run" + count);
-			boolean fileFound = Files.exists(target, (LinkOption[]) null);
-			if (fileFound) {
+			boolean fileFound = Files.exists(target, new LinkOption[]{LinkOption.NOFOLLOW_LINKS});
+			if (!fileFound) {
 				found = true;
 			} else {
 				count++;
 			}
 		}
 		
-		Path target = Paths.get("run" + count);
+	//	Path target = Paths.get("run" + count);
 		try {
-			Files.createDirectory(target, (FileAttribute[]) null);
+			//temp?
+			Runtime.getRuntime().exec("mkdir run" + count);
+			/*Files.createDirectory(target, (FileAttribute[]) null);*/
 			ObjectOutputStream oOS = new ObjectOutputStream(new FileOutputStream("run" + count + "/container.dat"));
 			oOS.writeObject(container);
 			oOS.close();
 		} catch (IOException e) {
 			System.err.println("Error, Unable to Create Folder.");
+			System.err.println(e.getStackTrace());
 		}
 		
 	}
@@ -62,7 +87,7 @@ public class Setup {
 		PrintWriter printer = null;
 		
 		try {
-			printer = new PrintWriter("foodList.txt");
+			printer = new PrintWriter("snackList.txt");
 			
 			//from website
 			try {
@@ -75,16 +100,16 @@ public class Setup {
 				website.close();
 				
 			} catch (IOException e) { //from backup
-				System.out.println("Not Able to Access Snack List From Internet.\nSwitching to Backup Panic List.");
+				System.err.println("Not Able to Access Snack List From Internet.\nSwitching to Backup Panic List.");
 				printer.println("Pi,300,12,20,10");
 			}
 		} catch (FileNotFoundException e) {
-			System.out.println("Unable to Create Snack File.");
+			System.err.println("Unable to Create Snack File.");
 		}
 		printer.close();
 		
 		try {
-			printer = new PrintWriter("drinklist.txt");
+			printer = new PrintWriter("drinkList.txt");
 			
 			//from website
 			try {
@@ -97,14 +122,14 @@ public class Setup {
 				website.close();
 				
 			} catch (IOException e) { //from backup
-				System.out.println("Not Able to Access Drink List From Internet.\nSwitching to Backup Panic List.");
+				System.err.println("Not Able to Access Drink List From Internet.\nSwitching to Backup Panic List.");
 				printer.println("Coke,200,15,20,5");
 				printer.println("Pepsi,250,20,20,10");
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("Unable to Create Drink File");
 		}
-		
+		printer.close();
 		
 	}
 	

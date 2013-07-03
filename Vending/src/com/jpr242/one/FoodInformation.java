@@ -31,7 +31,7 @@ public class FoodInformation implements Serializable{
 		this.carbs = carbs;
 		this.type = type;
 		this.expires = expireTimeInMills;
-		
+		setTypeBoolean();
 	}
 	
 	public String getNutritionInfo() {
