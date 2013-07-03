@@ -1,4 +1,4 @@
-csc202Assignment1
+Assignment1
 =================
 
 assignment number one
