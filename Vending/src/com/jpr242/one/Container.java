@@ -1,5 +1,9 @@
 package com.jpr242.one;
-
+/**
+ * 
+ * @author James Roberts jpr242
+ *
+ */
 import java.io.Serializable;
 import java.util.ArrayList;
 

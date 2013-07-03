@@ -6,11 +6,12 @@ package com.jpr242.one;
  */
 public class FoodInformation {
 	
-	private String name, type;
+	protected String name;
+	protected String type;
 	//private double price;
-	private int calories, fat, sugar, carbs;
-	private long expires;
-	private boolean snack, drink;
+	protected int calories, fat, sugar, carbs;
+	protected long expires;
+	protected boolean snack, drink;
 
 	public FoodInformation() {}
 	
@@ -102,6 +103,9 @@ public class FoodInformation {
 	}
 
 	public boolean isSnack() {
+		if (this.type.equalsIgnoreCase("Snack")) {
+			snack = true;
+		}
 		return snack;
 	}
 
@@ -110,6 +114,9 @@ public class FoodInformation {
 	}
 
 	public boolean isDrink() {
+		if (this.type.equalsIgnoreCase("Drink")) {
+			drink = true;
+		}
 		return drink;
 	}
 
