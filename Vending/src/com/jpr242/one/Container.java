@@ -21,10 +21,10 @@ public class Container implements Serializable{
 		this.recieptNames = new ArrayList<String>();
 	}
 	
-	public void addVendingMachine() {
+	public void addVendingMachine(int id) {
 		
 		if (this.machines.size() < 6) {
-			this.machines.add(new VendingMachine());
+			this.machines.add(new VendingMachine(id));
 		}
 		
 	}

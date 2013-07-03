@@ -18,9 +18,12 @@ public class VendingMachine implements Serializable{
 	private double moneyIn;
 	private ArrayList<Dispenser> dispensers;
 	private boolean on;
+	private ArrayList<String> recieptNames;
+	private int id;
 	
 	
-	public VendingMachine() {
+	public VendingMachine(int id) {
+		this.id = id;
 		this.on = true;
 		this.moneyIn = 0;
 		this.dispensers = new ArrayList<Dispenser>();
@@ -30,6 +33,8 @@ public class VendingMachine implements Serializable{
 		for (int i = 0; i < numOfDispensers; i++) {
 			this.dispensers.add(new Dispenser(-1));
 		}
+		
+		recieptNames = new ArrayList<String>();
 	}
 	
 	public String summary() {
@@ -51,6 +56,8 @@ public class VendingMachine implements Serializable{
 		return toReturn;
 	}
 	
+	
+	
 	public boolean purchase(int dispenserNumber) {
 		boolean toReturn = false;
 		
@@ -59,6 +66,7 @@ public class VendingMachine implements Serializable{
 			if (this.moneyIn - this.dispensers.get(dispenserNumber).getPrice() >= 0) {
 				this.dispensers.get(dispenserNumber).getDispenserContents().pollFirst();
 				toReturn = true;
+				//throw Exception;
 				this.moneyIn -= this.dispensers.get(dispenserNumber).getPrice();
 			} else {
 				System.err.println("Error Insufficient Funds");
@@ -71,14 +79,14 @@ public class VendingMachine implements Serializable{
 	}
 	
 	public String displayDispensers() {
-		String toReturn = "";
+		String toReturn = "\n";
 		
 		for (int i = 0; i < this.dispensers.size(); i++) {
 			Dispenser tempDispenser = this.dispensers.get(i);
 			if (!tempDispenser.getDispenserContents().isEmpty()) {
 				FoodInformation temp = tempDispenser.getDispenserContents().peekFirst();
 				String test = temp.getName();
-				toReturn += (i + 1) + ") " + tempDispenser.getDispenserContents().peekFirst().getName() + ", " + tempDispenser.getType() + "\n" ;
+				toReturn += (i + 1) + ") " + tempDispenser.getDispenserContents().peekFirst().getName() + ", " + tempDispenser.getType() + ", $" + tempDispenser.getPrice() + " (" + tempDispenser.getDispenserContents().size() + ")" + "\n" ;
 			}
 		}
 		
@@ -117,6 +125,14 @@ public class VendingMachine implements Serializable{
 
 	public void setOn(boolean on) {
 		this.on = on;
+	}
+
+	public ArrayList<String> getRecieptNames() {
+		return recieptNames;
+	}
+
+	public void setRecieptNames(ArrayList<String> recieptNames) {
+		this.recieptNames = recieptNames;
 	}
 	
 	

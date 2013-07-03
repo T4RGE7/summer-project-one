@@ -52,7 +52,7 @@ public class Setup {
 		container = new Container();
 		
 		for (int i = 0; i < numberOfMachines; i++) {
-			container.addVendingMachine();
+			container.addVendingMachine(i);
 		}
 		
 		boolean found = false;

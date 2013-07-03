@@ -1,8 +1,10 @@
 package com.jpr242.one;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
@@ -23,6 +25,7 @@ public class Driver {
 	private static ArrayList<Dispenser> dispensers;
 	private static Dispenser singleDispenser;
 	private static FoodInformation foodItem;
+	private static int countSave;
 
 	public static void main(String[] args) {
 		Scanner stdin = new Scanner(System.in);
@@ -40,7 +43,17 @@ public class Driver {
 		
 		System.out.println("Welcome to the Vending Machines!");
 		
-		while (localRunning) {
+		try {
+			if (true) {
+				throw new IOException();
+			}
+			
+		} catch (IOException e) {
+			System.err.println("caught");
+		}
+		
+		
+	main:while (localRunning) {
 			if (foodItem != null) {
 				// item trying to purchase
 				boolean inItem = true;
@@ -108,9 +121,20 @@ public class Driver {
 					System.out.println("Machine " + (i + 1) + ") " + machines.get(i).summary());
 				}
 					do {
-						System.out.print("\nWhich Machine would you like to look at? (1-" + (machines.size()) + "): ");
-						int tempSelection = stdin.nextInt();
-						stdin.nextLine();
+						System.out.print("\nWhich Machine would you like to look at? (1-" + (machines.size()) + ") or would you like to exit (exit): ");
+//						int tempSelection = stdin.nextInt();
+//						stdin.nextLine();
+						int tempSelection = -1;
+						String tempIn = stdin.nextLine();
+						if (tempIn.equalsIgnoreCase("exit")) {
+							break main;
+						} else {
+							try{
+								tempSelection = Integer.parseInt(tempIn);
+							} catch (NumberFormatException e) {
+								//System.err.println("Invalid Selection");
+							}
+						}
 						try {
 							singleMachine = machines.get(tempSelection - 1);
 						} catch (IndexOutOfBoundsException e) {
@@ -122,9 +146,20 @@ public class Driver {
 			}
 		}
 		
-		
+		saveState();
 	}
 	
+	public static void saveState() {
+		ObjectOutputStream oOS;
+		
+		try{
+			oOS = new ObjectOutputStream(new FileOutputStream("run" + countSave + "/container.dat"));
+			oOS.writeObject(container);
+			oOS.close();
+		} catch (IOException e) {
+			System.err.println("Unable to Save");
+		}
+	}
 	public static Container openSave() {
 		boolean found = false;
 		int count = 0;
@@ -140,6 +175,7 @@ public class Driver {
 		}
 		count--;
 		System.out.println("Setup #" + count);
+		countSave = count;
 		try {
 			return (Container)(new ObjectInputStream(new FileInputStream("run" + count + "/container.dat")).readObject());
 		} catch (ClassNotFoundException | IOException e) {
