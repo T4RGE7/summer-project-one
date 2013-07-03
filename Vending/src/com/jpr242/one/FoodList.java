@@ -29,6 +29,8 @@ public class FoodList implements Serializable{
 			
 			while (reader.hasNextLine()) {
 				snacks.add(reader.nextLine().split(","));
+				//
+				//System.out.println(snacks.get(snacks.size() - 1)[0]);
 			}
 		} catch (FileNotFoundException e) {
 			System.err.println("Snack List Not Found.");

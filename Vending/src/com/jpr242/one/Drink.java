@@ -15,7 +15,7 @@ public class Drink extends FoodInformation implements Serializable{
 	private static final long serialVersionUID = -1347050739095760055L;
 
 	public Drink(String[] input, long expireTime) {
-		if (input.length == 6) {
+		if (input.length == 5) {
 			this.name = input[0];
 			// this.price = price;
 			this.calories = Integer.valueOf(input[1]);

@@ -43,22 +43,35 @@ public class Driver {
 		while (localRunning) {
 			if (foodItem != null) {
 				// item trying to purchase
+				boolean inItem = true;
 				do{
-					System.out.print("Wound you like to purchase the " + foodItem.getName() + " (buy), look at its nutrition information (look) or go back (back)");
+					System.out.print("Wound you like to purchase the " + foodItem.getName() + " (buy), look at its nutrition information (look) or go back (back)?: ");
 					String tempInput = stdin.nextLine();
 					
 					if (tempInput.equalsIgnoreCase("buy")) {
-						
+						if (singleMachine.purchase(singleMachine.getDispensers().indexOf(singleDispenser))) {
+							System.out.println("Your purchase was successful");
+							foodItem = null;
+							singleDispenser = null;
+							dispensers = null;
+							singleMachine = null;
+							inItem = false;
+						} else {
+						}
 					} else if (tempInput.equalsIgnoreCase("look")) {
 						System.out.println(foodItem.getNutritionInfo() + ", $" + singleDispenser.getPrice());
+					} else if (tempInput.equalsIgnoreCase("back")) {
+						foodItem = null;
+						singleDispenser = null;
+						inItem = false;
 					}
-				} while (true);
+				} while (inItem);
 				
 			} else if (singleMachine != null) {
 				// picking dispenser
 				boolean goBack = false;
 				do {
-					System.out.print("Would you like to insert money (insert) or look at the items avalible (look) or select an item (select)?: ");
+					System.out.print("Would you like to insert money (insert) look at the items avalible (look) select an item (select), or go back (back)?: ");
 					String temp = stdin.nextLine();
 					
 					if (temp.equalsIgnoreCase("insert")) {
@@ -81,14 +94,21 @@ public class Driver {
 						} catch (IndexOutOfBoundsException e) {
 							System.err.println("Invalid Selection, Try Again.");
 						}
+					} else if (temp.equalsIgnoreCase("back")) {
+						foodItem = null;
+						singleDispenser = null;
+						dispensers = null;
+						singleMachine = null;
+						goBack = true;
 					}
 				} while (foodItem == null && !goBack);
 			} else if (machines != null) {
+				System.out.println();
 				for (int i = 0; i < machines.size(); i++) {
 					System.out.println("Machine " + (i + 1) + ") " + machines.get(i).summary());
 				}
 					do {
-						System.out.print("Which Machine would you like to look at? (1-" + (machines.size()) + "): ");
+						System.out.print("\nWhich Machine would you like to look at? (1-" + (machines.size()) + "): ");
 						int tempSelection = stdin.nextInt();
 						stdin.nextLine();
 						try {
@@ -119,7 +139,7 @@ public class Driver {
 			}
 		}
 		count--;
-		
+		System.out.println("Setup #" + count);
 		try {
 			return (Container)(new ObjectInputStream(new FileInputStream("run" + count + "/container.dat")).readObject());
 		} catch (ClassNotFoundException | IOException e) {

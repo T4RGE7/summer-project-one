@@ -18,7 +18,8 @@ public class Snack extends FoodInformation implements Serializable{
 	private static final long serialVersionUID = 388678973292073885L;
 
 	public Snack(String[] input, long expireTime) {
-		if (input.length == 6) {
+		//System.out.println(input.length);
+		if (input.length == 5) {
 			this.name = input[0];
 			// this.price = price;
 			this.calories = Integer.valueOf(input[1]);

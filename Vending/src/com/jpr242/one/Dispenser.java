@@ -87,7 +87,10 @@ public class Dispenser implements Serializable{
 					System.err.println("Check Random Number Generator Seed in Dispenser");
 			}
 		}
-		
+//		for (String str : infoString) {
+//			System.out.println(str);
+//		}
+//		
 	}
 	
 	private String[] getRandomInfo(ArrayList<String[]> correctFoodType) {

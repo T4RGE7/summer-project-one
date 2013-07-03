@@ -51,13 +51,34 @@ public class VendingMachine implements Serializable{
 		return toReturn;
 	}
 	
+	public boolean purchase(int dispenserNumber) {
+		boolean toReturn = false;
+		
+		
+		if (!this.dispensers.get(dispenserNumber).getDispenserContents().isEmpty()){
+			if (this.moneyIn - this.dispensers.get(dispenserNumber).getPrice() >= 0) {
+				this.dispensers.get(dispenserNumber).getDispenserContents().pollFirst();
+				toReturn = true;
+				this.moneyIn -= this.dispensers.get(dispenserNumber).getPrice();
+			} else {
+				System.err.println("Error Insufficient Funds");
+			}
+		} else {
+			System.err.println("Error Durring Purchase");
+		}
+		
+		return toReturn;
+	}
+	
 	public String displayDispensers() {
 		String toReturn = "";
 		
 		for (int i = 0; i < this.dispensers.size(); i++) {
 			Dispenser tempDispenser = this.dispensers.get(i);
 			if (!tempDispenser.getDispenserContents().isEmpty()) {
-				toReturn += (i + 1) + ") " + tempDispenser.getDispenserContents().peekFirst().name + ", " + tempDispenser.getType() + "\n" ;
+				FoodInformation temp = tempDispenser.getDispenserContents().peekFirst();
+				String test = temp.getName();
+				toReturn += (i + 1) + ") " + tempDispenser.getDispenserContents().peekFirst().getName() + ", " + tempDispenser.getType() + "\n" ;
 			}
 		}
 		
@@ -97,7 +118,6 @@ public class VendingMachine implements Serializable{
 	public void setOn(boolean on) {
 		this.on = on;
 	}
-	
 	
 	
 	
