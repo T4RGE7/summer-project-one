@@ -10,6 +10,7 @@ public class FoodInformation {
 	//private double price;
 	private int calories, fat, sugar, carbs;
 	private long expires;
+	private boolean snack, drink;
 
 	public FoodInformation() {}
 	
@@ -22,6 +23,26 @@ public class FoodInformation {
 		this.carbs = carbs;
 		this.type = type;
 		this.expires = expireTimeInMills;
+		
+	}
+	
+	public String getNutritionInfo() {
+		String toReturn = "";
+		toReturn += "Calories: " + this.calories + ", Fat: " + this.fat + ", Sugar: " + this.sugar + ", Carbs: " + this.carbs;
+		return toReturn;
+	}
+	
+	public void setTypeBoolean() {
+		if (this.type.equalsIgnoreCase("snack")) {
+			this.snack = true;
+			this.drink = false;
+		} else if (this.type.equalsIgnoreCase("drink")) {
+			this.snack = false;
+			this.drink = true;
+		} else {
+			this.snack = false;
+			this.drink = false;
+		}
 	}
 
 	public String getName() {
@@ -38,14 +59,6 @@ public class FoodInformation {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
 	}
 
 	public int getCalories() {
@@ -88,10 +101,20 @@ public class FoodInformation {
 		this.expires = expires;
 	}
 
-	public String getNutritionInfo() {
-		String toReturn = "";
-		toReturn += this.name + " - " + this.type + ", Calories: " + this.calories + ", Fat: " + this.fat + ", Sugar: " + this.sugar + ", Carbs: " + this.carbs;
-		return toReturn;
+	public boolean isSnack() {
+		return snack;
 	}
-	
+
+	public void setSnack(boolean snack) {
+		this.snack = snack;
+	}
+
+	public boolean isDrink() {
+		return drink;
+	}
+
+	public void setDrink(boolean drink) {
+		this.drink = drink;
+	}
+
 }

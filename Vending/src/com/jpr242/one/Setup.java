@@ -21,7 +21,7 @@ public class Setup {
 	}
 	
 	public static void downloadLists() {
-		PrintWriter printer;
+		PrintWriter printer = null;
 		
 		try {
 			printer = new PrintWriter("foodList.txt");
@@ -30,12 +30,37 @@ public class Setup {
 			try {
 				Scanner website = new Scanner(new URL("http://jimisthebest.cs.net/csc202/foodList.html").openStream());
 				
-			} catch (IOException e) {
-				System.out.println("Not Able to Access Online List.\nSwitching to Backup Panic List.");
-				printer.println("Pi,")
+				while (website.hasNextLine()) {
+					printer.println(website.nextLine());
+				}
+				
+			} catch (IOException e) { //from backup
+				System.out.println("Not Able to Access Snack List From Internet.\nSwitching to Backup Panic List.");
+				printer.println("Pi,300,12,20,10");
 			}
 		} catch (FileNotFoundException e) {
-			System.out.println("Unable to Create File.");
+			System.out.println("Unable to Create Snack File.");
+		}
+		printer.close();
+		
+		try {
+			printer = new PrintWriter("drinklist.txt");
+			
+			//from website
+			try {
+				Scanner website = new Scanner(new URL("http://jimisthebest.cs.net/csc202/drinkList.html").openStream());
+				
+				while (website.hasNextLine()) {
+					printer.println(website.nextLine());
+				}
+				
+			} catch (IOException e) { //from backup
+				System.out.println("Not Able to Access Drink List From Internet.\nSwitching to Backup Panic List.");
+				printer.println("Coke,200,15,20,5");
+				printer.println("Pepsi,250,20,20,10");
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("Unable to Create Drink File");
 		}
 		
 		

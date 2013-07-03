@@ -11,10 +11,14 @@ public class Dispenser {
 	
 	public Dispenser(int initialNumber) {
 		
+		dispenserContents = new LinkedBlockingDeque<FoodInformation>();
+		
 		for (int i = 0; i < initialNumber; i++) {
 			
 		}
 	}
 	
-	private void 
+	private void randomFood() {
+		
+	}
 }
