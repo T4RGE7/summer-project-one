@@ -21,7 +21,7 @@ public class Dispenser implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -8881136851858909286L;
-	private LinkedBlockingDeque<FoodInformation> dispenserContents;	
+	private LinkedBlockingDeque<FoodInfo> dispenserContents;	
 	private double price;
 	private String[] infoString;
 	private final int numberOfChoices = 2;
@@ -33,7 +33,7 @@ public class Dispenser implements Serializable{
 	
 	public Dispenser(int initialNumber) {
 		
-		dispenserContents = new LinkedBlockingDeque<FoodInformation>();
+		dispenserContents = new LinkedBlockingDeque<FoodInfo>();
 		
 		if (initialNumber <= 20) {
 			initialNumber = 20 + new Random().nextInt(10);
@@ -102,12 +102,12 @@ public class Dispenser implements Serializable{
 		return correctFoodType.get(new Random().nextInt(correctFoodType.size()));
 	}
 
-	public LinkedBlockingDeque<FoodInformation> getDispenserContents() {
+	public LinkedBlockingDeque<FoodInfo> getDispenserContents() {
 		return dispenserContents;
 	}
 
 	public void setDispenserContents(
-			LinkedBlockingDeque<FoodInformation> dispenserContents) {
+			LinkedBlockingDeque<FoodInfo> dispenserContents) {
 		this.dispenserContents = dispenserContents;
 	}
 

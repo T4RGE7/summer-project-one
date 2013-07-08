@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
@@ -28,6 +29,9 @@ public class VendingMachine implements Serializable{
 	private int id;
 	private int runNumber;
 	private boolean inUse;
+	private ArrayList<Integer> quantitySold;
+	private double totalSales;
+	private final DecimalFormat df = new DecimalFormat("#0.00");
 	
 	
 	public VendingMachine(int id, int runNumber) {
@@ -37,14 +41,20 @@ public class VendingMachine implements Serializable{
 		this.moneyIn = 0;
 		this.dispensers = new ArrayList<Dispenser>();
 		this.inUse = false;
+		this.quantitySold = new ArrayList<Integer>();
 		
 		int numOfDispensers = new Random().nextInt(5) + 20;
 		
 		for (int i = 0; i < numOfDispensers; i++) {
 			this.dispensers.add(new Dispenser(-1));
+			this.quantitySold.add(0);
 		}
 		
+		
+		
+		
 		recieptNames = new ArrayList<String>();
+		this.totalSales = 0;
 	}
 	
 	public String summary() {
@@ -68,7 +78,7 @@ public class VendingMachine implements Serializable{
 	
 	public void printReciept(String info) {
 		String date = new Date().toString();
-		String fileName = date.replace(":", "_").replace(" ", "_");
+		String fileName ="run" + this.runNumber + "/reciepts/machine" + this.id + "reciept" + date.replace(":", "_").replace(" ", "_") + System.currentTimeMillis() + ".txt";
 		PrintWriter printer;
 		try {
 			printer = new PrintWriter(fileName);
@@ -84,25 +94,31 @@ public class VendingMachine implements Serializable{
 	public boolean purchase(int dispenserNumber) {
 		boolean toReturn = false;
 		
+		if (!on) {
+			return false;
+		}
 		
 		if (!this.dispensers.get(dispenserNumber).getDispenserContents().isEmpty()){
 			double price;
 			if (this.moneyIn - (price = this.dispensers.get(dispenserNumber).getPrice()) >= 0) {
-				FoodInformation temp = this.dispensers.get(dispenserNumber).getDispenserContents().pollFirst();
+				FoodInfo temp = this.dispensers.get(dispenserNumber).getDispenserContents().pollFirst();
 				toReturn = true;
 				//throw Exception;
-				this.moneyIn -= price;
+				//this.moneyIn -= price;
 				String toPrint = "";
 				//toPrint += new Date().toString() + "\n";
-				toPrint += "Machine " + dispenserNumber + "\n";
+				toPrint += "Machine " + this.id + "\n";
+				toPrint += "Dispenser " + dispenserNumber + "/n";
 				toPrint += "Item Purchased\tSubtotal\n";
-				toPrint += temp.getName() + "\t$" + this.dispensers.get(dispenserNumber).getPrice() + "\n\n";
-				toPrint += "Money in:\t$" + this.moneyIn;
-				toPrint += "Total:\t$" + this.dispensers.get(dispenserNumber).getPrice();
-				toPrint += "Change:\t$" + (this.moneyIn - price);
+				toPrint += temp.getName() + "\t$" + df.format(this.dispensers.get(dispenserNumber).getPrice()) + "\n\n";
+				toPrint += "Money in:\t$" + df.format(this.moneyIn) + "/n";
+				toPrint += "Total:\t$" + df.format(price) + "/n";
+				toPrint += "Change:\t$" + df.format(this.moneyIn - price);
 				printReciept(toPrint);
 				if (this.moneyIn > price) {
-					System.out.println("Your change is: $" + (this.moneyIn - price));
+					System.out.println("Your change is: $" + df.format(this.moneyIn - price));
+					this.quantitySold.set(dispenserNumber, this.quantitySold.get(dispenserNumber) + 1);
+					this.totalSales += price;
 				}
 			} else {
 				System.err.println("Error Insufficient Funds");
@@ -120,7 +136,7 @@ public class VendingMachine implements Serializable{
 		for (int i = 0; i < this.dispensers.size(); i++) {
 			Dispenser tempDispenser = this.dispensers.get(i);
 			if (!tempDispenser.getDispenserContents().isEmpty()) {
-				FoodInformation temp = tempDispenser.getDispenserContents().peekFirst();
+				FoodInfo temp = tempDispenser.getDispenserContents().peekFirst();
 				String test = temp.getName();
 				toReturn += (i + 1) + ") " + tempDispenser.getDispenserContents().peekFirst().getName() + ", " + tempDispenser.getType() + ", $" + tempDispenser.getPrice() + " (" + tempDispenser.getDispenserContents().size() + ")" + "\n" ;
 			}
@@ -135,17 +151,19 @@ public class VendingMachine implements Serializable{
 	
 	public void turnOff() {
 		this.on = false;
+		writeContents();
 		
 	}
 	
 	public void powerToggle() {
 		if (this.on) {
 			//turn off
-			this.on = true;
-		} else {
-			//turn on
 			this.on = false;
 			writeContents();
+		} else {
+			//turn on
+			this.on = true;
+			
 			
 		}
 	}
@@ -160,8 +178,18 @@ public class VendingMachine implements Serializable{
 			printer.println(new Date().toString());
 			for (int i = 0; i < this.dispensers.size(); i++) {
 				Dispenser temp = this.dispensers.get(i);
-				printer.println(temp.getDispenserContents().size() + "," + temp.getDispenserContents().peekFirst().getName() + "," + temp.getDispenserContents().peekFirst().getNutritionInfo());
+				printer.println(i + ")" +temp.getDispenserContents().size() + "," + temp.getDispenserContents().peekFirst().getName() + " @ $" + df.format(temp.getPrice()) + "," + temp.getDispenserContents().peekFirst().getNutritionInfo());
 			}
+			printer.close();
+			printer = new PrintWriter("run" + this.runNumber + "/Machine" + this.id + "Sales.txt");
+			printer.println("Machine " + this.id);
+			printer.println(new Date().toString());
+			for (int i = 0; i < this.dispensers.size(); i++) {
+				Dispenser temp = this.dispensers.get(i);
+				printer.println(this.quantitySold.get(i) + " " + temp.getDispenserContents().peekFirst().getName() + " sold @ $" + df.format(temp.getPrice()) + " = $" + df.format(temp.getPrice() * this.quantitySold.get(i)));
+			}
+			printer.println("Total Sales = " + this.totalSales);
+			printer.close();
 		} catch (IOException e) {
 			System.err.println("Unable to Write Contents to Text File.");
 		}

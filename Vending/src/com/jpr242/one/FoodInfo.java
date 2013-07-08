@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author James Roberts jpr242
  *
  */
-public class FoodInformation implements Serializable{
+public class FoodInfo implements Serializable{
 	
 	/**
 	 * 
@@ -20,9 +20,9 @@ public class FoodInformation implements Serializable{
 	protected long expires;
 	protected boolean snack, drink;
 
-	public FoodInformation() {}
+	public FoodInfo() {}
 	
-	public FoodInformation(String name, /*double price,*/ int calories, int fat, int sugar, int carbs, String type, long expireTimeInMills) {
+	public FoodInfo(String name, /*double price,*/ int calories, int fat, int sugar, int carbs, String type, long expireTimeInMills) {
 		this.name = name;
 	//	this.price = price;
 		this.calories = calories;

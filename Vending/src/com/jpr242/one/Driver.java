@@ -24,7 +24,7 @@ public class Driver {
 	private static VendingMachine singleMachine;
 	private static ArrayList<Dispenser> dispensers;
 	private static Dispenser singleDispenser;
-	private static FoodInformation foodItem;
+	private static FoodInfo foodItem;
 	private static int countSave;
 
 	public static void main(String[] args) {
@@ -42,6 +42,27 @@ public class Driver {
 		boolean localRunning = true;
 		
 		System.out.println("Welcome to the Vending Machines!");
+		
+		for (int i = 0; i < machines.size(); i++) {
+			machines.get(i).writeContents();
+			System.out.println("Machine " + (i + 1) + ") " + machines.get(i).summary());
+		}
+		
+		for (int i = 0; i < 1000; i++) {
+			Customer temp = new Customer(i, countSave, container);
+			String returned = temp.runCommand();
+			while (returned.equalsIgnoreCase("continue")) {
+				returned = temp.runCommand();
+			}
+			System.out.println("Customer " + i +": " + returned);
+		}
+		
+		for (int i = 0; i < machines.size(); i++) {
+			machines.get(i).writeContents();
+			System.out.println("Machine " + (i + 1) + ") " + machines.get(i).summary());
+		}
+		System.exit(0);
+		
 		
 //		try {
 //			if (true) {

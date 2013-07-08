@@ -8,7 +8,7 @@ import java.io.Serializable;
  *
  */
 
-public class Snack extends FoodInformation implements Serializable{
+public class Snack extends FoodInfo implements Serializable{
 	
 	
 	

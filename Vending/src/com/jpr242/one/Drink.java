@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author James Roberts jpr242
  *
  */
-public class Drink extends FoodInformation implements Serializable{
+public class Drink extends FoodInfo implements Serializable{
 
 	/**
 	 * 

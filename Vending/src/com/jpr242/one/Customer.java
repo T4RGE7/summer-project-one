@@ -12,15 +12,16 @@ public class Customer {
 	private double money;
 	private VendingMachine currentMachine;
 	private Dispenser dispenser;
-	private FoodInformation item;
+	private FoodInfo item;
 	private Random rand;
 	
-	public Customer(int id, int runNum) {		
+	public Customer(int id, int runNum, Container lobby) {		
 		this.rand = new Random();
 		this.id = id;
 		this.runNum = runNum;
 		this.money = ((double)rand.nextInt(10) + 1) + rand.nextInt(100)/100.0;
-		reloadContainer();
+		//reloadContainer();
+		this.lobby = lobby;
 		changeMachine();
 	}
 	
@@ -43,16 +44,28 @@ public class Customer {
 		try {
 			if (commandNumber < 10) {
 				this.currentMachine.powerToggle();
+				System.out.println("Machine turned " + (this.currentMachine.isOn() ? "on" : "off"));
 			} else if (commandNumber < 30) {
 				insertFunds();
+				System.out.println("More money inserted");
 			} else if (commandNumber < 40) {
 				changeMachine();
+				System.out.println("Machine Changed");
 			} else if (commandNumber < 50) {
 				changeFoodItem();
+				System.out.println("Food Item Selection Changed");
 			} else if (commandNumber < 60) {
-				return "done";
+				this.currentMachine.returnMoney();
+				System.out.println("Leaving Early");
+				this.currentMachine.setInUse(false);
+				return "left early";
 			} else if (commandNumber < 90) {
-				
+				if (purchase()) {
+					this.currentMachine.setInUse(false);
+					return "success";
+				}
+			} else {
+				//do nothing
 			}
 		
 		} catch (NullPointerException e) {
@@ -60,15 +73,30 @@ public class Customer {
 		}
 		
 		
-		return "";
+		return "continue";
 	}
 	
 	private void changeMachine() {
+		boolean checkAll = false;
+		
+		outer:for (int i = 0 ; i < this.lobby.getMachines().size(); i++) {
+			if (this.lobby.getMachines().get(i).isOn()) {
+				checkAll = true;
+				break outer;
+			}
+		}
+
+
+		
 		if (this.currentMachine != null) {
 			this.currentMachine.setInUse(false);
 			this.money += this.currentMachine.returnMoney();
 		}
 		this.currentMachine = null;
+		if (!checkAll) {
+			this.currentMachine = this.lobby.getMachines().get(this.rand.nextInt(this.lobby.getMachines().size()));;
+			this.currentMachine.setOn(true);
+		}
 		while (this.currentMachine == null) {
 			try {
 				this.currentMachine = this.lobby.getMachines().get(this.rand.nextInt(this.lobby.getMachines().size()));
@@ -82,6 +110,7 @@ public class Customer {
 		}
 		this.currentMachine.setInUse(true);
 		changeFoodItem();
+		insertFunds();
 	}
 	
 	private void changeFoodItem() {
@@ -107,13 +136,21 @@ public class Customer {
 	}
 	
 	private void insertFunds() {
-		double temp = rand.nextInt((int)(this.money) - 1) + 1;
+//		if (this.money < 1) {
+//			return;
+//		}
+		double temp = 0;
+		try {
+			temp = rand.nextInt((int)(this.money) - 1) + 1;
+		} catch (IllegalArgumentException e) {
+			temp = (int) this.money;
+		}
 		this.money -= temp;
 		this.currentMachine.addMoney(temp);
 	}
 	
-	private void purchase() {
-		this.currentMachine.purchase(this.currentMachine.getDispensers().indexOf(this.dispenser));
+	private boolean purchase() {
+		return this.currentMachine.purchase(this.currentMachine.getDispensers().indexOf(this.dispenser));
 	}
 	
 }

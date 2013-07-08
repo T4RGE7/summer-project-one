@@ -73,9 +73,19 @@ public class Setup {
 		try {
 			//temp?
 			Runtime.getRuntime().exec("mkdir run" + count);
+			long lastTime = System.currentTimeMillis() + 1000;
+			while (System.currentTimeMillis() < lastTime) {
+				//wait 5 seconds
+			}
+			Runtime.getRuntime().exec("mkdir run" + count + "/reciepts");
+			lastTime = System.currentTimeMillis() + 1000;
+			while (System.currentTimeMillis() < lastTime) {
+				//wait 5 seconds
+			}
 			/*Files.createDirectory(target, (FileAttribute[]) null);*/
 			ObjectOutputStream oOS = new ObjectOutputStream(new FileOutputStream("run" + count + "/container.dat"));
 			oOS.writeObject(container);
+			oOS.flush();
 			oOS.close();
 		} catch (IOException e) {
 			System.err.println("Error, Unable to Create Folder.");
