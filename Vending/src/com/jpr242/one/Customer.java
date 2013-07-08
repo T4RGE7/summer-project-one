@@ -86,7 +86,6 @@ public class Customer {
 			}
 		}
 
-
 		
 		if (this.currentMachine != null) {
 			this.currentMachine.setInUse(false);
@@ -106,6 +105,7 @@ public class Customer {
 			} catch (IndexOutOfBoundsException e) {
 				System.err.println("Invalid Machine Selection");
 				this.currentMachine = null;
+				//return;
 			}
 		}
 		this.currentMachine.setInUse(true);
@@ -116,6 +116,18 @@ public class Customer {
 	private void changeFoodItem() {
 		this.dispenser = null;
 		this.item = null;
+		boolean check = false;
+		outer:for (int i = 0; i < this.currentMachine.getDispensers().size(); i++) {
+			if (!this.currentMachine.getDispensers().get(i).getDispenserContents().isEmpty()) {
+				check = true;
+				break outer;
+			}
+		}
+		
+		if (!check) {
+			return;
+		}
+		
 		while (this.dispenser == null || this.item == null) {
 			try{
 				this.dispenser = this.currentMachine.getDispensers().get(rand.nextInt(this.currentMachine.getDispensers().size()));	
@@ -130,6 +142,7 @@ public class Customer {
 				this.dispenser = null;
 				this.item = null;
 				System.err.println("Invalid Choice, Dispenser Empty");
+				return;
 			}
 	
 		}

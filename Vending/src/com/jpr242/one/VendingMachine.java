@@ -99,7 +99,8 @@ public class VendingMachine implements Serializable{
 		}
 		
 		try {
-			if (!this.dispensers.get(dispenserNumber).canBuy()){
+			//used to have an !
+			if (this.dispensers.get(dispenserNumber).canBuy()){
 				double price;
 				if (this.moneyIn - (price = this.dispensers.get(dispenserNumber).getPrice()) >= 0) {
 					FoodInfo temp = this.dispensers.get(dispenserNumber).getDispenserContents().pollFirst();
@@ -118,6 +119,7 @@ public class VendingMachine implements Serializable{
 					printReciept(toPrint);
 					if (this.moneyIn > price) {
 						System.out.println("Your change is: $" + df.format(this.moneyIn - price));
+						this.moneyIn = 0;
 						this.quantitySold.set(dispenserNumber, this.quantitySold.get(dispenserNumber) + 1);
 						this.totalSales += price;
 					}
@@ -127,8 +129,13 @@ public class VendingMachine implements Serializable{
 			}
 		} catch (InsufficientFundsException e) {
 			System.err.println("ERROR: You have not inserted enough money");
+			return false;
 		} catch (InvalidChoiceException e) {
 			System.err.println("ERROR: Dispenser is empty");
+			return false;
+		} catch (IndexOutOfBoundsException e) {
+			System.err.println("ERROR: Invalid Choice(Dispenser is empty)");
+			return false;
 		}
 		
 //		if (!this.dispensers.get(dispenserNumber).getDispenserContents().isEmpty()){
@@ -211,7 +218,12 @@ public class VendingMachine implements Serializable{
 			printer.println(new Date().toString());
 			for (int i = 0; i < this.dispensers.size(); i++) {
 				Dispenser temp = this.dispensers.get(i);
-				printer.println(i + ")" +temp.getDispenserContents().size() + "," + temp.getDispenserContents().peekFirst().getName() + " @ $" + df.format(temp.getPrice()) + "," + temp.getDispenserContents().peekFirst().getNutritionInfo());
+				if (!temp.getDispenserContents().isEmpty()){
+					printer.println(i + ")" +temp.getDispenserContents().size() + "," + temp.getDispenserContents().peekFirst().getName() + " @ $" + df.format(temp.getPrice()) + "," + temp.getDispenserContents().peekFirst().getNutritionInfo());
+			
+				} else {
+					printer.println("Empty!");
+				}
 			}
 			printer.close();
 			printer = new PrintWriter("run" + this.runNumber + "/Machine" + this.id + "Sales.txt");
@@ -219,7 +231,7 @@ public class VendingMachine implements Serializable{
 			printer.println(new Date().toString());
 			for (int i = 0; i < this.dispensers.size(); i++) {
 				Dispenser temp = this.dispensers.get(i);
-				printer.println(this.quantitySold.get(i) + " " + temp.getDispenserContents().peekFirst().getName() + " sold @ $" + df.format(temp.getPrice()) + " = $" + df.format(temp.getPrice() * this.quantitySold.get(i)));
+				printer.println(this.quantitySold.get(i) + " " + temp.getName() + " sold @ $" + df.format(temp.getPrice()) + " = $" + df.format(temp.getPrice() * this.quantitySold.get(i)));
 			}
 			printer.println("Total Sales = " + df.format(this.totalSales));
 			printer.close();
@@ -263,6 +275,17 @@ public class VendingMachine implements Serializable{
 
 
 	public boolean isOn() {
+		boolean hasStock = false;
+		outer:for (int i = 0; i < this.dispensers.size(); i++) {
+			if (!this.dispensers.get(i).getDispenserContents().isEmpty()) {
+				hasStock = true;
+				break outer;
+			}
+		}
+		if (!hasStock) {
+			on = false;
+			return false;
+		}
 		return on;
 	}
 

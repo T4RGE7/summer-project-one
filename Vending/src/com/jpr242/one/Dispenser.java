@@ -25,7 +25,7 @@ public class Dispenser implements Serializable{
 	private double price;
 	private String[] infoString;
 	private final int numberOfChoices = 2;
-	private String type;
+	private String type, name, nutritionFacts;
 	
 	public Dispenser() {
 //		this = new Dispenser(new Random().nextInt(10) + 20);
@@ -49,7 +49,8 @@ public class Dispenser implements Serializable{
 			} else if (this.type.equalsIgnoreCase("Drink")) {
 				dispenserContents.addLast(new Drink(this.infoString, System.currentTimeMillis() + (long) 2*7*24*60*60*1000));
 			}
-		}
+		} this.name = dispenserContents.peekFirst().getName();
+		this.nutritionFacts = dispenserContents.peekFirst().getNutritionInfo();
 	}
 	
 	private void randomFood() {
@@ -95,7 +96,7 @@ public class Dispenser implements Serializable{
 	}
 	
 	public String getPriceForPrinting() {
-		return new DecimalFormat("#0.00").format(this.price + "");
+		return new DecimalFormat("#0.00").format(this.price);
 	}
 	
 	private String[] getRandomInfo(ArrayList<String[]> correctFoodType) {
@@ -146,4 +147,21 @@ public class Dispenser implements Serializable{
 			throw new InvalidChoiceException();
 		}
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getNutritionFacts() {
+		return nutritionFacts;
+	}
+
+	public void setNutritionFacts(String nutritionFacts) {
+		this.nutritionFacts = nutritionFacts;
+	}
+	
 }
