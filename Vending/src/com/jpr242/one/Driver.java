@@ -173,13 +173,19 @@ public class Driver extends JComponent implements MouseListener{
 			
 			int customerCount = 0;
 			while (customerCount < 10000) {
+				if (new Random().nextInt(100) > 30){
 				Customer temp = new Customer(customerCount, countSave, container);
+			//	if (new Random().nextInt(100) > 30){
 				String returned = temp.runCommand();
 				while (returned.equalsIgnoreCase("continue")) {
 					returned = temp.runCommand();
 				}
 				System.out.println("Customer " + customerCount +": " + returned);
 				customerCount++;
+				} else {
+					//Do nothing
+					System.currentTimeMillis();
+				}
 			}
 			
 			for (int i = 0; i < machines.size(); i++) {
