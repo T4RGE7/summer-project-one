@@ -17,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.JComponent;
@@ -36,11 +37,15 @@ public class FancyButton extends JComponent implements MouseListener{
 	private static ArrayList<DispenserButton> dispenserButtons;
 	private static ArrayList<MachineButton> insertButtons;
 	private static ArrayList<MachineButton> buyButtons;
+	private static MachineButton randomMachine, randomPower, randomMoney, randomDispenser, exit;
 	private boolean successful = false;
 	private long successTime;
 	
 	public FancyButton(){
 		setMachineButtons();
+		setRandomMachineButton();
+		setRandomPowerButton();
+		setPowerButton();
 //		System.out.println(machineButtons.get(1).getX1());
 //		System.out.println(machineButtons.get(1).getX2());
 //		System.out.println(machineButtons.get(1).getY1());
@@ -61,12 +66,18 @@ public class FancyButton extends JComponent implements MouseListener{
 			
 		}
 		
+		drawUpperRightButton(g, randomMachine);
+		drawUpperRightButton(g, randomPower);
+		
+		
 		if (foodItem != null) {
 			drawFoodItem(g);
 			drawBuyButton(g);
 		}
 			
 		if(singleMachine != null) {
+			drawUpperRightButton(g, randomMoney);
+			drawUpperRightButton(g, randomDispenser);
 			for (int i = 0; i < dispenserButtons.size(); i++) {
 	//			System.out.println(i);
 				drawDispensers(g, dispenserButtons.get(i));
@@ -87,7 +98,7 @@ public class FancyButton extends JComponent implements MouseListener{
 		if (System.nanoTime() < successTime) {
 			drawSuccess(g);
 		}
-		
+		drawPowerButton(g, exit);
 		while (System.nanoTime() < lastTime){}
 		
 		repaint();
@@ -165,6 +176,24 @@ public class FancyButton extends JComponent implements MouseListener{
 		foodItem = singleDispenser.getDispenserContents().peekFirst();
 	}
 	
+	public static void setPowerButton() {
+		MachineButton temp = new MachineButton(-5, null);
+		temp.setX1(675);
+		temp.setX2(700);
+		temp.setY1(0);
+		temp.setY2(25);
+		temp.setWidth(25);
+		temp.setHeight(25);
+		exit = temp;
+	}
+	
+	public static void drawPowerButton(Graphics g, MachineButton b) {
+		g.setColor(Color.red);
+		g.fillRect(b.getX1(), b.getY1(), b.getWidth(), b.getHeight());
+		g.setColor(Color.white);
+		g.drawString("X", b.getX1() + 5, b.getY1() + 15);
+		
+	}
 	
 	public static void setMachineButtons() {
 		machineButtons = new ArrayList<MachineButton>();
@@ -245,6 +274,69 @@ public class FancyButton extends JComponent implements MouseListener{
 		}
 	}
 	
+	//randomMachine, randomPower, randomMoney, randomDispenser;
+	public static void setRandomPowerButton() {
+		MachineButton temp = new MachineButton(-5, null);
+		temp.setX1(500);
+		temp.setX2(650);
+		temp.setY1(0);
+		temp.setY2(50);
+		temp.setWidth(150);
+		temp.setHeight(50);
+		randomPower = temp;
+	}
+	
+	public static void setRandomMachineButton() {
+		MachineButton temp = new MachineButton(-6, null);
+		temp.setX1(500);
+		temp.setX2(650);
+		temp.setY1(55);
+		temp.setY2(105);
+		temp.setWidth(150);
+		temp.setHeight(50);
+		randomMachine = temp;
+	}
+	
+	public static void setRandomMoneyButton() {
+		MachineButton temp = new MachineButton(-7, null);
+		temp.setX1(500);
+		temp.setX2(650);
+		temp.setY1(110);
+		temp.setY2(210);
+		temp.setWidth(150);
+		temp.setHeight(50);
+		randomMoney = temp;
+	}
+	
+	public static void setRandomDispenserButton() {
+		MachineButton temp = new MachineButton(-8, null);
+		temp.setX1(500);
+		temp.setX2(650);
+		temp.setY1(215);
+		temp.setY2(265);
+		temp.setWidth(150);
+		temp.setHeight(50);
+		randomDispenser = temp;
+	}
+	
+	public static void drawUpperRightButton(Graphics g, MachineButton b) {
+		g.setColor(Color.white);
+		g.fillRect(b.getX1(), b.getY1(), b.getWidth(), b.getHeight());
+		g.setColor(Color.black);
+		String toDraw[] = {"Random Power","Random Machine","Random Item","Random Money"};
+		int toDrawNum = 0;
+		switch(b.getId()) {
+		case -8: toDrawNum = 2;
+		break;
+		case -7: toDrawNum = 3;
+		break;
+		case -6: toDrawNum = 1;
+		break;
+		default: toDrawNum = 0;
+		}
+		g.drawString(toDraw[toDrawNum], b.getX1() + 5, b.getY1() + 25);
+	}
+	
 	public static void saveState() {
 		ObjectOutputStream oOS;
 		
@@ -295,7 +387,11 @@ public class FancyButton extends JComponent implements MouseListener{
 	public void drawInsertButtons(Graphics g) {
 		String names[] = {"Insert $1", "Insert $5", "Return Money"};
 		for (int i = 0; i < insertButtons.size(); i++) {
-			g.setColor(Color.white);
+			if (singleMachine.isOn()){
+				g.setColor(Color.white);
+			} else {
+				g.setColor(Color.gray);
+			}
 			g.fillRect(insertButtons.get(i).getX1(), insertButtons.get(i).getY1(), insertButtons.get(i).getWidth(), insertButtons.get(i).getHeight());
 			g.setColor(Color.black);
 			g.drawString(names[i], insertButtons.get(i).getX1() + 10, insertButtons.get(i).getY1() + 25);
@@ -313,7 +409,7 @@ public class FancyButton extends JComponent implements MouseListener{
 	//	System.out.println(button.getX1());
 		g.fillRect(button.getX1(), button.getY1(), button.getWidth(), button.getHeight());
 		g.setColor(Color.black);
-		g.drawString(button.getDispenser().getName() + " $" + button.getDispenser().getPriceForPrinting(), button.getX1() + 10, button.getY1() + 15);
+		g.drawString(button.getDispenser().getName() + " $" + button.getDispenser().getPriceForPrinting() + " (" + button.getDispenser().getDispenserContents().size() + ")", button.getX1() + 10, button.getY1() + 15);
 	}
 	
 	public void drawFoodItem(Graphics g) {
@@ -333,7 +429,7 @@ public class FancyButton extends JComponent implements MouseListener{
 	}
 	
 	public void drawBuyButton(Graphics g) {
-		if (singleDispenser.getDispenserContents().isEmpty() || singleMachine.getMoneyIn() < singleDispenser.getPrice()) {
+		if (singleDispenser.getDispenserContents().isEmpty() || singleMachine.getMoneyIn() < singleDispenser.getPrice() || !singleMachine.isOn()) {
 			g.setColor(Color.gray);
 		} else {
 			g.setColor(Color.white);
@@ -358,10 +454,13 @@ public class FancyButton extends JComponent implements MouseListener{
 	}
 	
 	public void checkButtons(double x, double y) {
-		System.out.println(machineButtons.size());
+	//	System.out.println(machineButtons.size());
+		if (machineButtons != null){
 		for (int i = 0; i < machineButtons.size(); i++) {
 			if (machineButtons.get(i).isInside(x, y)) {
 				singleMachine = machines.get(i);
+				setRandomMoneyButton();
+				setRandomDispenserButton();
 				dispensers = null;
 				singleDispenser = null;
 				foodItem = null;
@@ -371,6 +470,8 @@ public class FancyButton extends JComponent implements MouseListener{
 				return;
 			}
 		}
+		}
+		if (dispenserButtons != null){
 		for (int i = 0; i < dispenserButtons.size(); i++) {
 			if (dispenserButtons.get(i).isInside(x, y)) {
 				singleDispenser = singleMachine.getDispensers().get(i);
@@ -382,6 +483,8 @@ public class FancyButton extends JComponent implements MouseListener{
 				return;
 			}
 		}
+		}
+		if (insertButtons != null && singleMachine.isOn()){
 		for (int i = 0; i < insertButtons.size(); i++) {
 			if (insertButtons.get(i).isInside(x, y)) {
 				if (i == 0) {
@@ -392,6 +495,7 @@ public class FancyButton extends JComponent implements MouseListener{
 					singleMachine.returnMoney();
 				}
 			}
+		}
 		}
 		
 		//buy
@@ -423,6 +527,81 @@ public class FancyButton extends JComponent implements MouseListener{
 			}
 		}
 		}
+		//randomMachine, randomPower, randomMoney, randomDispenser;
+		if (randomMachine != null) {
+			if (randomMachine.isInside(x, y)) {
+				singleMachine = machines.get(new Random().nextInt(machines.size()));
+				setRandomMoneyButton();
+				setRandomDispenserButton();
+				dispensers = null;
+				singleDispenser = null;
+				foodItem = null;
+				System.out.println("YAY ");
+				setDispenserButtons();
+				setInsertButtons();
+				return;
+			}
+		}
+		if (randomPower != null) {
+			if (randomPower.isInside(x, y)) {
+				for (int i = 0; i < machines.size(); i++) {
+					if (new Random().nextBoolean()) {
+						machines.get(i).powerToggle();
+					}
+				}
+				setRandomMoneyButton();
+				setRandomDispenserButton();
+				dispensers = null;
+				singleDispenser = null;
+				foodItem = null;
+				return;
+			}
+			
+		}
+		if (randomMoney != null && singleMachine != null && singleMachine.isOn()) {
+			if (randomMoney.isInside(x, y)) {
+				singleMachine.setMoneyIn(new Random().nextInt(20));
+				return;
+			}
+		}
+		if (randomDispenser != null && singleMachine != null) {
+			if (randomDispenser.isInside(x, y)) {
+				singleDispenser = singleMachine.getDispensers().get(new Random().nextInt(singleMachine.getDispensers().size()));
+				foodItem = null;
+				System.out.println("YAY ");
+				setFoodItem();
+				setBuyButton();
+				
+				return;
+			}
+		}
+		if (exit.isInside(x, y)) {
+			saveState();
+			System.exit(0);
+		}
+	}
+	
+	public void checkPowerClick(double x, double y) {
+		if (machineButtons != null){
+			for (int i = 0; i < machineButtons.size(); i++) {
+				if (machineButtons.get(i).isInside(x, y)) {
+					machines.get(i).powerToggle();
+					if (singleMachine != null) {
+					setRandomMoneyButton();
+					setRandomDispenserButton();
+					}
+					dispensers = null;
+					singleDispenser = null;
+					foodItem = null;
+					if (singleMachine != null) {
+					System.out.println("YAY " + i);
+					setDispenserButtons();
+					setInsertButtons();
+					}
+					return;
+				}
+			}
+			}
 	}
 
 	@Override
@@ -439,6 +618,9 @@ public class FancyButton extends JComponent implements MouseListener{
 		System.out.println((int)x + "," + (int)y);
 		if (e.getButton() == 1) {
 			checkButtons(x, y);
+		}
+		if (e.getButton() == 3) {
+			checkPowerClick(x, y);
 		}
 	}
 
