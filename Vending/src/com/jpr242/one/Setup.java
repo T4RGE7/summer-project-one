@@ -21,7 +21,9 @@ public class Setup {
 	
 	private static Container container;
 	private static FoodList foodList;
-	
+	/**
+	 * Generates the next Run randomly
+	 */
 	public static void main(String[] args) {
 		int temp = -1;
 		
@@ -93,7 +95,9 @@ public class Setup {
 		}
 		
 	}
-	
+	/**
+	 * Pulls snack and drink list from internet if possible
+	 */
 	public static void downloadLists() {
 		PrintWriter printer = null;
 		

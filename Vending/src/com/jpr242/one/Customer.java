@@ -1,5 +1,9 @@
 package com.jpr242.one;
-
+/**
+ * 
+ * @author James Roberts jpr242
+ *
+ */
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -14,7 +18,12 @@ public class Customer {
 	private Dispenser dispenser;
 	private FoodInfo item;
 	private Random rand;
-	
+	/**
+	 * Creates a customer with built in commands
+	 * @param id sequential number to keep track of order
+	 * @param runNum the current run number
+	 * @param lobby the container being used
+	 */
 	public Customer(int id, int runNum, Container lobby) {		
 		this.rand = new Random();
 		this.id = id;
@@ -24,7 +33,9 @@ public class Customer {
 		this.lobby = lobby;
 		changeMachine();
 	}
-	
+	/**
+	 * Reloads the lobby container
+	 */
 	public void reloadContainer() {
 		ObjectInputStream oIS;
 		try {
@@ -38,7 +49,10 @@ public class Customer {
 		}
 	}
 	
-	
+	/**
+	 * Runs one command
+	 * @return String "continue" if not done yet
+	 */
 	public String runCommand() {
 		int commandNumber = rand.nextInt(100);
 		try {
@@ -75,7 +89,9 @@ public class Customer {
 		
 		return "continue";
 	}
-	
+	/**
+	 * Selects a different machine for the customer to look at
+	 */
 	private void changeMachine() {
 		boolean checkAll = false;
 		
@@ -112,7 +128,9 @@ public class Customer {
 		changeFoodItem();
 		insertFunds();
 	}
-	
+	/**
+	 * Selects a different item for the customer to look at
+	 */
 	private void changeFoodItem() {
 		this.dispenser = null;
 		this.item = null;
@@ -147,7 +165,9 @@ public class Customer {
 	
 		}
 	}
-	
+	/**
+	 * The customer adds money
+	 */
 	private void insertFunds() {
 //		if (this.money < 1) {
 //			return;
@@ -161,7 +181,9 @@ public class Customer {
 		this.money -= temp;
 		this.currentMachine.addMoney(temp);
 	}
-	
+	/**
+	 * Customer attempts to buy current item with current funds
+	 */
 	private boolean purchase() {
 		return this.currentMachine.purchase(this.currentMachine.getDispensers().indexOf(this.dispenser));
 	}

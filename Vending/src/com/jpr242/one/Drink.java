@@ -1,5 +1,9 @@
 package com.jpr242.one;
-
+/**
+ * 
+ * @author James Roberts jpr242
+ *
+ */
 import java.io.Serializable;
 
 /**
@@ -13,7 +17,11 @@ public class Drink extends FoodInfo implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -1347050739095760055L;
-
+	/**
+	 * Creates a new Drink object
+	 * @param input	takes an array of length 5 and converts it into information about the drink
+	 * @param expireTime	takes a long representing the expiration time in milliseconds 
+	 */
 	public Drink(String[] input, long expireTime) {
 		if (input.length == 5) {
 			this.name = input[0];
