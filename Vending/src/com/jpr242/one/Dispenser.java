@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -91,6 +92,10 @@ public class Dispenser implements Serializable{
 //			System.out.println(str);
 //		}
 //		
+	}
+	
+	public String getPriceForPrinting() {
+		return new DecimalFormat("#0.00").format(this.price + "");
 	}
 	
 	private String[] getRandomInfo(ArrayList<String[]> correctFoodType) {

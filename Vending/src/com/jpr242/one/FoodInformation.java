@@ -52,6 +52,7 @@ public class FoodInformation implements Serializable{
 			this.drink = false;
 		}
 	}
+	
 
 	public String getName() {
 		return name;

@@ -1,6 +1,9 @@
 package com.jpr242.one;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ public class VendingMachine implements Serializable{
 	private ArrayList<String> recieptNames;
 	private int id;
 	private int runNumber;
+	private boolean inUse;
 	
 	
 	public VendingMachine(int id, int runNumber) {
@@ -32,6 +36,7 @@ public class VendingMachine implements Serializable{
 		this.on = true;
 		this.moneyIn = 0;
 		this.dispensers = new ArrayList<Dispenser>();
+		this.inUse = false;
 		
 		int numOfDispensers = new Random().nextInt(5) + 20;
 		
@@ -132,7 +137,49 @@ public class VendingMachine implements Serializable{
 		this.on = false;
 		
 	}
+	
+	public void powerToggle() {
+		if (this.on) {
+			//turn off
+			this.on = true;
+		} else {
+			//turn on
+			this.on = false;
+			writeContents();
+			
+		}
+	}
 
+	public void writeContents() {
+		PrintWriter printer;
+		ObjectOutputStream oOS;
+		
+		try {
+			printer = new PrintWriter("run" + this.runNumber + "/Machine" + this.id + "Inventory.txt");
+			printer.println("Machine " + this.id);
+			printer.println(new Date().toString());
+			for (int i = 0; i < this.dispensers.size(); i++) {
+				Dispenser temp = this.dispensers.get(i);
+				printer.println(temp.getDispenserContents().size() + "," + temp.getDispenserContents().peekFirst().getName() + "," + temp.getDispenserContents().peekFirst().getNutritionInfo());
+			}
+		} catch (IOException e) {
+			System.err.println("Unable to Write Contents to Text File.");
+		}
+		try {
+			oOS = new ObjectOutputStream(new FileOutputStream("run" + this.runNumber + "/Machine" + this.id + ".dat"));
+			oOS.writeObject(this);
+			oOS.flush();
+			oOS.close();
+		} catch (IOException e) {
+			System.err.println("Unable to Write Object");
+		}
+	}
+	
+	public double returnMoney() {
+		double temp = this.moneyIn;
+		this.moneyIn = 0.0;
+		return temp;
+	}
 
 	public double getMoneyIn() {
 		return moneyIn;
@@ -169,6 +216,30 @@ public class VendingMachine implements Serializable{
 
 	public void setRecieptNames(ArrayList<String> recieptNames) {
 		this.recieptNames = recieptNames;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getRunNumber() {
+		return runNumber;
+	}
+
+	public void setRunNumber(int runNumber) {
+		this.runNumber = runNumber;
+	}
+
+	public boolean isInUse() {
+		return inUse;
+	}
+
+	public void setInUse(boolean inUse) {
+		this.inUse = inUse;
 	}
 	
 	
