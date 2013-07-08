@@ -98,34 +98,67 @@ public class VendingMachine implements Serializable{
 			return false;
 		}
 		
-		if (!this.dispensers.get(dispenserNumber).getDispenserContents().isEmpty()){
-			double price;
-			if (this.moneyIn - (price = this.dispensers.get(dispenserNumber).getPrice()) >= 0) {
-				FoodInfo temp = this.dispensers.get(dispenserNumber).getDispenserContents().pollFirst();
-				toReturn = true;
-				//throw Exception;
-				//this.moneyIn -= price;
-				String toPrint = "";
-				//toPrint += new Date().toString() + "\n";
-				toPrint += "Machine " + this.id + "\n";
-				toPrint += "Dispenser " + dispenserNumber + "/n";
-				toPrint += "Item Purchased\tSubtotal\n";
-				toPrint += temp.getName() + "\t$" + df.format(this.dispensers.get(dispenserNumber).getPrice()) + "\n\n";
-				toPrint += "Money in:\t$" + df.format(this.moneyIn) + "/n";
-				toPrint += "Total:\t$" + df.format(price) + "/n";
-				toPrint += "Change:\t$" + df.format(this.moneyIn - price);
-				printReciept(toPrint);
-				if (this.moneyIn > price) {
-					System.out.println("Your change is: $" + df.format(this.moneyIn - price));
-					this.quantitySold.set(dispenserNumber, this.quantitySold.get(dispenserNumber) + 1);
-					this.totalSales += price;
+		try {
+			if (!this.dispensers.get(dispenserNumber).canBuy()){
+				double price;
+				if (this.moneyIn - (price = this.dispensers.get(dispenserNumber).getPrice()) >= 0) {
+					FoodInfo temp = this.dispensers.get(dispenserNumber).getDispenserContents().pollFirst();
+					toReturn = true;
+					//throw Exception;
+					//this.moneyIn -= price;
+					String toPrint = "";
+					//toPrint += new Date().toString() + "\n";
+					toPrint += "Machine " + this.id + "\n";
+					toPrint += "Dispenser " + dispenserNumber + "/n";
+					toPrint += "Item Purchased\tSubtotal\n";
+					toPrint += temp.getName() + "\t$" + df.format(this.dispensers.get(dispenserNumber).getPrice()) + "\n\n";
+					toPrint += "Money in:\t$" + df.format(this.moneyIn) + "/n";
+					toPrint += "Total:\t$" + df.format(price) + "/n";
+					toPrint += "Change:\t$" + df.format(this.moneyIn - price);
+					printReciept(toPrint);
+					if (this.moneyIn > price) {
+						System.out.println("Your change is: $" + df.format(this.moneyIn - price));
+						this.quantitySold.set(dispenserNumber, this.quantitySold.get(dispenserNumber) + 1);
+						this.totalSales += price;
+					}
+				} else {
+					throw new InsufficientFundsException();
 				}
-			} else {
-				System.err.println("Error Insufficient Funds");
 			}
-		} else {
-			System.err.println("Error Durring Purchase");
+		} catch (InsufficientFundsException e) {
+			System.err.println("ERROR: You have not inserted enough money");
+		} catch (InvalidChoiceException e) {
+			System.err.println("ERROR: Dispenser is empty");
 		}
+		
+//		if (!this.dispensers.get(dispenserNumber).getDispenserContents().isEmpty()){
+//			double price;
+//			if (this.moneyIn - (price = this.dispensers.get(dispenserNumber).getPrice()) >= 0) {
+//				FoodInfo temp = this.dispensers.get(dispenserNumber).getDispenserContents().pollFirst();
+//				toReturn = true;
+//				//throw Exception;
+//				//this.moneyIn -= price;
+//				String toPrint = "";
+//				//toPrint += new Date().toString() + "\n";
+//				toPrint += "Machine " + this.id + "\n";
+//				toPrint += "Dispenser " + dispenserNumber + "/n";
+//				toPrint += "Item Purchased\tSubtotal\n";
+//				toPrint += temp.getName() + "\t$" + df.format(this.dispensers.get(dispenserNumber).getPrice()) + "\n\n";
+//				toPrint += "Money in:\t$" + df.format(this.moneyIn) + "/n";
+//				toPrint += "Total:\t$" + df.format(price) + "/n";
+//				toPrint += "Change:\t$" + df.format(this.moneyIn - price);
+//				printReciept(toPrint);
+//				if (this.moneyIn > price) {
+//					System.out.println("Your change is: $" + df.format(this.moneyIn - price));
+//					this.quantitySold.set(dispenserNumber, this.quantitySold.get(dispenserNumber) + 1);
+//					this.totalSales += price;
+//				}
+//			} else {
+//				System.err.println("Error Insufficient Funds");
+//			}
+//		} else {
+//			System.err.println("Error Durring Purchase");
+//		}
 		
 		return toReturn;
 	}
@@ -138,7 +171,7 @@ public class VendingMachine implements Serializable{
 			if (!tempDispenser.getDispenserContents().isEmpty()) {
 				FoodInfo temp = tempDispenser.getDispenserContents().peekFirst();
 				String test = temp.getName();
-				toReturn += (i + 1) + ") " + tempDispenser.getDispenserContents().peekFirst().getName() + ", " + tempDispenser.getType() + ", $" + tempDispenser.getPrice() + " (" + tempDispenser.getDispenserContents().size() + ")" + "\n" ;
+				toReturn += (i + 1) + ") " + tempDispenser.getDispenserContents().peekFirst().getName() + ", " + tempDispenser.getType() + ", $" + df.format(tempDispenser.getPrice()) + " (" + tempDispenser.getDispenserContents().size() + ")" + "\n" ;
 			}
 		}
 		
@@ -188,7 +221,7 @@ public class VendingMachine implements Serializable{
 				Dispenser temp = this.dispensers.get(i);
 				printer.println(this.quantitySold.get(i) + " " + temp.getDispenserContents().peekFirst().getName() + " sold @ $" + df.format(temp.getPrice()) + " = $" + df.format(temp.getPrice() * this.quantitySold.get(i)));
 			}
-			printer.println("Total Sales = " + this.totalSales);
+			printer.println("Total Sales = " + df.format(this.totalSales));
 			printer.close();
 		} catch (IOException e) {
 			System.err.println("Unable to Write Contents to Text File.");

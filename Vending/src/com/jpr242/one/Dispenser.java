@@ -139,5 +139,11 @@ public class Dispenser implements Serializable{
 		return numberOfChoices;
 	}
 	
-	
+	public boolean canBuy() throws InvalidChoiceException{
+		if (!this.dispenserContents.isEmpty()) {
+			return true;
+		} else {
+			throw new InvalidChoiceException();
+		}
+	}
 }

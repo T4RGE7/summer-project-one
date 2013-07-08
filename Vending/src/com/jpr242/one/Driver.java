@@ -40,29 +40,73 @@ public class Driver {
 		machines = container.getMachines();
 		
 		boolean localRunning = true;
+		boolean gui = true;
+		
+		System.out.print("Would you like to run the GUI (gui) or the Demo (demo)?: ");
+		if (new Scanner(System.in).nextLine().equalsIgnoreCase("demo")) {
+			gui = false;
+		}
 		
 		System.out.println("Welcome to the Vending Machines!");
 		
 		for (int i = 0; i < machines.size(); i++) {
 			machines.get(i).writeContents();
-			System.out.println("Machine " + (i + 1) + ") " + machines.get(i).summary());
+		//	System.out.println("Machine " + (i + 1) + ") " + machines.get(i).summary());
 		}
 		
-		for (int i = 0; i < 1000; i++) {
-			Customer temp = new Customer(i, countSave, container);
-			String returned = temp.runCommand();
-			while (returned.equalsIgnoreCase("continue")) {
-				returned = temp.runCommand();
+		if (!gui) {
+			
+			for (int i = 0; i < machines.size(); i++) {
+				//machines.get(i).writeContents();
+				System.out.println("Machine " + (i + 1) + ") " + machines.get(i).summary());
 			}
-			System.out.println("Customer " + i +": " + returned);
+			
+			int customerCount = 0;
+			while (customerCount < 10000) {
+				Customer temp = new Customer(customerCount, countSave, container);
+				String returned = temp.runCommand();
+				while (returned.equalsIgnoreCase("continue")) {
+					returned = temp.runCommand();
+				}
+				System.out.println("Customer " + customerCount +": " + returned);
+				customerCount++;
+			}
+			
+			for (int i = 0; i < machines.size(); i++) {
+				machines.get(i).writeContents();
+				System.out.println("Machine " + (i + 1) + ") " + machines.get(i).summary());
+			}
+			try {
+				ObjectOutputStream oOS = new ObjectOutputStream(new FileOutputStream("run" + countSave + "/container.dat"));
+				oOS.writeObject(container);
+				oOS.flush();
+				oOS.close();
+			} catch (IOException e) {
+				System.err.println("Unable to write file");
+			}
+			System.exit(0);
+		}
+		try {
+			Runtime.getRuntime().exec("java GUIDriver");
+		} catch (IOException e) {
+
 		}
 		
-		for (int i = 0; i < machines.size(); i++) {
-			machines.get(i).writeContents();
-			System.out.println("Machine " + (i + 1) + ") " + machines.get(i).summary());
-		}
-		System.exit(0);
-		
+//		for (int i = 0; i < 1000; i++) {
+//			Customer temp = new Customer(i, countSave, container);
+//			String returned = temp.runCommand();
+//			while (returned.equalsIgnoreCase("continue")) {
+//				returned = temp.runCommand();
+//			}
+//			System.out.println("Customer " + i +": " + returned);
+//		}
+//		
+//		for (int i = 0; i < machines.size(); i++) {
+//			machines.get(i).writeContents();
+//			System.out.println("Machine " + (i + 1) + ") " + machines.get(i).summary());
+//		}
+//		System.exit(0);
+//		
 		
 //		try {
 //			if (true) {
