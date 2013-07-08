@@ -1,0 +1,25 @@
+Machine 3
+Mon Jul 08 14:13:16 EDT 2013
+25 Crackers sold @ $3.00 = $75.00
+7 Soup sold @ $7.00 = $49.00
+28 Fanta sold @ $2.00 = $56.00
+15 Mnt Dew sold @ $4.00 = $60.00
+21 Taco sold @ $4.00 = $84.00
+12 Coke sold @ $6.00 = $72.00
+18 Muffin sold @ $3.00 = $54.00
+6 Cake sold @ $7.00 = $42.00
+29 Coke sold @ $3.00 = $87.00
+3 Pi sold @ $7.00 = $21.00
+11 Pepsi sold @ $6.00 = $66.00
+23 Taco sold @ $4.00 = $92.00
+16 Crackers sold @ $5.00 = $80.00
+19 Crackers sold @ $4.00 = $76.00
+18 Taco sold @ $4.00 = $72.00
+20 Pepsi sold @ $4.00 = $80.00
+9 Cake sold @ $6.00 = $54.00
+14 Coke sold @ $5.00 = $70.00
+28 Pepsi sold @ $2.00 = $56.00
+11 Sprite sold @ $7.00 = $77.00
+27 Sprite sold @ $1.00 = $27.00
+5 Fanta sold @ $6.00 = $30.00
+Total Sales = 1380.00

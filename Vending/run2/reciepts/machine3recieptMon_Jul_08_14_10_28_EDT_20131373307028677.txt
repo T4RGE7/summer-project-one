@@ -1,0 +1,9 @@
+Mon Jul 08 14:10:28 EDT 2013
+Machine 3
+Dispenser 22
+Item Purchased	Subtotal
+Mnt Dew	$1.00
+
+Money in:	$1.00
+Total:	$1.00
+Change:	$0.00

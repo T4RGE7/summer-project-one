@@ -1,0 +1,24 @@
+Machine 0
+Mon Jul 08 14:20:50 EDT 2013
+0 Coke sold @ $7.00 = $0.00
+0 Pi sold @ $1.00 = $0.00
+0 Fanta sold @ $7.00 = $0.00
+0 Fritos sold @ $4.00 = $0.00
+0 Muffin sold @ $4.00 = $0.00
+0 Taco sold @ $3.00 = $0.00
+0 Muffin sold @ $4.00 = $0.00
+0 Fritos sold @ $3.00 = $0.00
+0 Fanta sold @ $5.00 = $0.00
+0 Muffin sold @ $2.00 = $0.00
+0 Sunkist sold @ $4.00 = $0.00
+0 Crackers sold @ $7.00 = $0.00
+0 Pi sold @ $3.00 = $0.00
+0 Mnt Dew sold @ $2.00 = $0.00
+0 Pi sold @ $4.00 = $0.00
+0 Taco sold @ $2.00 = $0.00
+0 Sunkist sold @ $2.00 = $0.00
+0 Fanta sold @ $1.00 = $0.00
+0 Muffin sold @ $7.00 = $0.00
+0 Mnt Dew sold @ $4.00 = $0.00
+0 Mnt Dew sold @ $7.00 = $0.00
+Total Sales = $0.00

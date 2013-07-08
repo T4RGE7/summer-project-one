@@ -1,0 +1,26 @@
+Machine 0
+Mon Jul 08 14:08:21 EDT 2013
+16 Pi sold @ $7.00 = $112.00
+23 Coke sold @ $6.00 = $138.00
+12 Pepsi sold @ $7.00 = $84.00
+28 Fritos sold @ $1.00 = $28.00
+18 Muffin sold @ $6.00 = $108.00
+27 Sprite sold @ $1.00 = $27.00
+25 Sunkist sold @ $1.00 = $25.00
+24 Coke sold @ $1.00 = $24.00
+12 Fanta sold @ $6.00 = $72.00
+23 Pepsi sold @ $1.00 = $23.00
+24 Pepsi sold @ $3.00 = $72.00
+26 Taco sold @ $3.00 = $78.00
+29 Sprite sold @ $1.00 = $29.00
+26 Pi sold @ $2.00 = $52.00
+28 Fanta sold @ $5.00 = $140.00
+24 Sprite sold @ $1.00 = $24.00
+25 Fanta sold @ $1.00 = $25.00
+19 Pi sold @ $6.00 = $114.00
+16 Sprite sold @ $7.00 = $112.00
+20 Muffin sold @ $5.00 = $100.00
+28 Sunkist sold @ $1.00 = $28.00
+23 Coke sold @ $2.00 = $46.00
+23 Mnt Dew sold @ $3.00 = $69.00
+Total Sales = 1530.00

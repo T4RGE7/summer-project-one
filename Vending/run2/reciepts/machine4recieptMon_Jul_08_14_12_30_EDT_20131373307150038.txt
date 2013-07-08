@@ -1,0 +1,9 @@
+Mon Jul 08 14:12:30 EDT 2013
+Machine 4
+Dispenser 8
+Item Purchased	Subtotal
+Cake	$7.00
+
+Money in:	$7.00
+Total:	$7.00
+Change:	$0.00

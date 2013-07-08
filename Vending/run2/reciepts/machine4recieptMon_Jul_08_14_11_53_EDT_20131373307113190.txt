@@ -1,0 +1,9 @@
+Mon Jul 08 14:11:53 EDT 2013
+Machine 4
+Dispenser 11
+Item Purchased	Subtotal
+Pepsi	$6.00
+
+Money in:	$10.00
+Total:	$6.00
+Change:	$4.00

@@ -1,0 +1,9 @@
+Mon Jul 08 14:10:28 EDT 2013
+Machine 3
+Dispenser 18
+Item Purchased	Subtotal
+Taco	$6.00
+
+Money in:	$8.00
+Total:	$6.00
+Change:	$2.00

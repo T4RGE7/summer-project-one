@@ -1,0 +1,9 @@
+Mon Jul 08 14:05:03 EDT 2013
+Machine 2
+Dispenser 18
+Item Purchased	Subtotal
+Fanta	$3.00
+
+Money in:	$6.00
+Total:	$3.00
+Change:	$3.00

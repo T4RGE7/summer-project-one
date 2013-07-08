@@ -1,0 +1,25 @@
+Machine 1
+Mon Jul 08 14:08:22 EDT 2013
+26 Muffin sold @ $4.00 = $104.00
+24 Soup sold @ $2.00 = $48.00
+23 Soup sold @ $6.00 = $138.00
+24 Cake sold @ $1.00 = $24.00
+23 Pi sold @ $4.00 = $92.00
+22 Soup sold @ $2.00 = $44.00
+27 Pepsi sold @ $4.00 = $108.00
+25 Crackers sold @ $5.00 = $125.00
+20 Fritos sold @ $5.00 = $100.00
+20 Coke sold @ $6.00 = $120.00
+28 Fritos sold @ $4.00 = $112.00
+14 Pi sold @ $7.00 = $98.00
+7 Sunkist sold @ $7.00 = $49.00
+22 Taco sold @ $6.00 = $132.00
+28 Coke sold @ $4.00 = $112.00
+22 Pi sold @ $1.00 = $22.00
+9 Fanta sold @ $7.00 = $63.00
+20 Fanta sold @ $3.00 = $60.00
+22 Pepsi sold @ $4.00 = $88.00
+22 Muffin sold @ $2.00 = $44.00
+25 Crackers sold @ $3.00 = $75.00
+22 Soup sold @ $6.00 = $132.00
+Total Sales = 1890.00

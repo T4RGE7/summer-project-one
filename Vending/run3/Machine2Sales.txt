@@ -1,0 +1,27 @@
+Machine 1
+Mon Jul 08 14:15:49 EDT 2013
+0 Pi sold @ $4.00 = $0.00
+0 Soup sold @ $6.00 = $0.00
+0 Fanta sold @ $3.00 = $0.00
+0 Muffin sold @ $1.00 = $0.00
+0 Fanta sold @ $6.00 = $0.00
+0 Soup sold @ $2.00 = $0.00
+0 Crackers sold @ $1.00 = $0.00
+0 Sunkist sold @ $4.00 = $0.00
+0 Sunkist sold @ $6.00 = $0.00
+0 Crackers sold @ $3.00 = $0.00
+0 Pepsi sold @ $2.00 = $0.00
+0 Sunkist sold @ $3.00 = $0.00
+0 Fanta sold @ $2.00 = $0.00
+0 Muffin sold @ $2.00 = $0.00
+0 Fritos sold @ $1.00 = $0.00
+1 Soup sold @ $5.00 = $5.00
+0 Mnt Dew sold @ $6.00 = $0.00
+0 Mnt Dew sold @ $3.00 = $0.00
+0 Fanta sold @ $3.00 = $0.00
+0 Soup sold @ $3.00 = $0.00
+0 Sunkist sold @ $6.00 = $0.00
+0 Cake sold @ $4.00 = $0.00
+0 Fanta sold @ $1.00 = $0.00
+0 Mnt Dew sold @ $2.00 = $0.00
+Total Sales = 5.00

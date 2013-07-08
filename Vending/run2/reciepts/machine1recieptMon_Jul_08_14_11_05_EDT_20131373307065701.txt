@@ -1,0 +1,9 @@
+Mon Jul 08 14:11:05 EDT 2013
+Machine 1
+Dispenser 19
+Item Purchased	Subtotal
+Muffin	$7.00
+
+Money in:	$10.00
+Total:	$7.00
+Change:	$3.00

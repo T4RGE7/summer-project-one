@@ -1,0 +1,9 @@
+Mon Jul 08 14:05:03 EDT 2013
+Machine 3
+Dispenser 19
+Item Purchased	Subtotal
+Pi	$2.00
+
+Money in:	$2.00
+Total:	$2.00
+Change:	$0.00

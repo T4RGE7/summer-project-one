@@ -1,0 +1,26 @@
+Machine 2
+Mon Jul 08 14:13:16 EDT 2013
+Empty!
+1)14,Soup @ $6.00,Calories: 200, Fat: 10, Sugar: 10, Carbs: 15
+2)17,Fritos @ $7.00,Calories: 150, Fat: 8, Sugar: 12, Carbs: 9
+3)11,Sunkist @ $5.00,Calories: 190, Fat: 14, Sugar: 7, Carbs: 23
+Empty!
+Empty!
+Empty!
+7)18,Soup @ $7.00,Calories: 200, Fat: 10, Sugar: 10, Carbs: 15
+8)11,Muffin @ $4.00,Calories: 400, Fat: 20, Sugar: 10, Carbs: 8
+9)20,Muffin @ $7.00,Calories: 400, Fat: 20, Sugar: 10, Carbs: 8
+10)16,Soup @ $7.00,Calories: 200, Fat: 10, Sugar: 10, Carbs: 15
+11)6,Soup @ $4.00,Calories: 200, Fat: 10, Sugar: 10, Carbs: 15
+Empty!
+13)19,Pi @ $7.00,Calories: 300, Fat: 12, Sugar: 20, Carbs: 10
+14)7,Fanta @ $4.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+15)12,Taco @ $6.00,Calories: 300, Fat: 15, Sugar: 2, Carbs: 3
+16)12,Soup @ $5.00,Calories: 200, Fat: 10, Sugar: 10, Carbs: 15
+17)16,Taco @ $6.00,Calories: 300, Fat: 15, Sugar: 2, Carbs: 3
+Empty!
+19)22,Sprite @ $7.00,Calories: 150, Fat: 14, Sugar: 17, Carbs: 12
+Empty!
+Empty!
+22)1,Fanta @ $4.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+23)1,Crackers @ $5.00,Calories: 50, Fat: 3, Sugar: 5, Carbs: 10

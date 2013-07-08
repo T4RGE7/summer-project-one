@@ -1,0 +1,24 @@
+Machine 0
+Mon Jul 08 14:13:16 EDT 2013
+Empty!
+1)5,Pi @ $4.00,Calories: 300, Fat: 12, Sugar: 20, Carbs: 10
+Empty!
+3)8,Fanta @ $6.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+4)10,Fanta @ $6.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+Empty!
+6)1,Mnt Dew @ $3.00,Calories: 170, Fat: 19, Sugar: 12, Carbs: 18
+7)25,Taco @ $7.00,Calories: 300, Fat: 15, Sugar: 2, Carbs: 3
+8)21,Taco @ $7.00,Calories: 300, Fat: 15, Sugar: 2, Carbs: 3
+Empty!
+Empty!
+11)8,Coke @ $5.00,Calories: 200, Fat: 15, Sugar: 20, Carbs: 5
+Empty!
+Empty!
+Empty!
+Empty!
+Empty!
+17)18,Fritos @ $7.00,Calories: 150, Fat: 8, Sugar: 12, Carbs: 9
+18)18,Muffin @ $7.00,Calories: 400, Fat: 20, Sugar: 10, Carbs: 8
+Empty!
+Empty!
+21)4,Pepsi @ $4.00,Calories: 250, Fat: 20, Sugar: 20, Carbs: 10

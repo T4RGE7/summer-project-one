@@ -1,0 +1,9 @@
+Mon Jul 08 14:11:16 EDT 2013
+Machine 4
+Dispenser 13
+Item Purchased	Subtotal
+Crackers	$5.00
+
+Money in:	$7.00
+Total:	$5.00
+Change:	$2.00

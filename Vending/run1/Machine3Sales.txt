@@ -1,0 +1,24 @@
+Machine 2
+Mon Jul 08 14:08:22 EDT 2013
+13 Muffin sold @ $7.00 = $91.00
+28 Soup sold @ $3.00 = $84.00
+28 Sunkist sold @ $3.00 = $84.00
+20 Sunkist sold @ $1.00 = $20.00
+24 Muffin sold @ $2.00 = $48.00
+11 Taco sold @ $7.00 = $77.00
+10 Soup sold @ $7.00 = $70.00
+14 Muffin sold @ $7.00 = $98.00
+27 Soup sold @ $4.00 = $108.00
+20 Soup sold @ $2.00 = $40.00
+24 Soup sold @ $5.00 = $120.00
+27 Crackers sold @ $2.00 = $54.00
+22 Pepsi sold @ $3.00 = $66.00
+20 Muffin sold @ $5.00 = $100.00
+26 Muffin sold @ $5.00 = $130.00
+26 Cake sold @ $4.00 = $104.00
+20 Pi sold @ $6.00 = $120.00
+6 Pepsi sold @ $7.00 = $42.00
+24 Pi sold @ $2.00 = $48.00
+21 Pi sold @ $2.00 = $42.00
+29 Pepsi sold @ $1.00 = $29.00
+Total Sales = 1575.00

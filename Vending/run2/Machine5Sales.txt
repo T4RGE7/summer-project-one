@@ -1,0 +1,23 @@
+Machine 4
+Mon Jul 08 14:13:16 EDT 2013
+26 Fanta sold @ $1.00 = $26.00
+17 Sunkist sold @ $6.00 = $102.00
+9 Sunkist sold @ $6.00 = $54.00
+24 Coke sold @ $4.00 = $96.00
+11 Pi sold @ $6.00 = $66.00
+23 Mnt Dew sold @ $2.00 = $46.00
+14 Muffin sold @ $6.00 = $84.00
+10 Taco sold @ $6.00 = $60.00
+10 Sprite sold @ $6.00 = $60.00
+22 Crackers sold @ $3.00 = $66.00
+25 Taco sold @ $4.00 = $100.00
+22 Mnt Dew sold @ $1.00 = $22.00
+19 Soup sold @ $5.00 = $95.00
+21 Sunkist sold @ $3.00 = $63.00
+17 Fanta sold @ $7.00 = $119.00
+15 Fritos sold @ $5.00 = $75.00
+9 Fritos sold @ $7.00 = $63.00
+20 Fritos sold @ $1.00 = $20.00
+9 Crackers sold @ $7.00 = $63.00
+6 Cake sold @ $6.00 = $36.00
+Total Sales = 1316.00

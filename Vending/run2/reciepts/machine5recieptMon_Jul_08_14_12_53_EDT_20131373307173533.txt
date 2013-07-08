@@ -1,0 +1,9 @@
+Mon Jul 08 14:12:53 EDT 2013
+Machine 5
+Dispenser 3
+Item Purchased	Subtotal
+Sunkist	$6.00
+
+Money in:	$7.00
+Total:	$6.00
+Change:	$1.00

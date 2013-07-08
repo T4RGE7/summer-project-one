@@ -1,0 +1,26 @@
+Machine 4
+Mon Jul 08 14:20:50 EDT 2013
+0 Fritos sold @ $4.00 = $0.00
+0 Fanta sold @ $2.00 = $0.00
+0 Pepsi sold @ $7.00 = $0.00
+0 Fritos sold @ $7.00 = $0.00
+0 Muffin sold @ $4.00 = $0.00
+0 Sprite sold @ $7.00 = $0.00
+0 Crackers sold @ $4.00 = $0.00
+0 Coke sold @ $1.00 = $0.00
+0 Sprite sold @ $3.00 = $0.00
+0 Sprite sold @ $6.00 = $0.00
+0 Soup sold @ $3.00 = $0.00
+0 Pi sold @ $6.00 = $0.00
+0 Mnt Dew sold @ $4.00 = $0.00
+0 Pepsi sold @ $3.00 = $0.00
+0 Coke sold @ $1.00 = $0.00
+0 Crackers sold @ $7.00 = $0.00
+0 Taco sold @ $3.00 = $0.00
+0 Soup sold @ $6.00 = $0.00
+0 Fanta sold @ $6.00 = $0.00
+0 Fanta sold @ $1.00 = $0.00
+0 Muffin sold @ $1.00 = $0.00
+0 Soup sold @ $7.00 = $0.00
+0 Coke sold @ $1.00 = $0.00
+Total Sales = $0.00

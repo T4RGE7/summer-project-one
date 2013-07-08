@@ -1,0 +1,9 @@
+Mon Jul 08 14:13:12 EDT 2013
+Machine 3
+Dispenser 2
+Item Purchased	Subtotal
+Soup	$6.00
+
+Money in:	$8.00
+Total:	$6.00
+Change:	$2.00

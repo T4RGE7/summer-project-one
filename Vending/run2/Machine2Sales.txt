@@ -1,0 +1,26 @@
+Machine 1
+Mon Jul 08 14:13:16 EDT 2013
+22 Muffin sold @ $4.00 = $88.00
+28 Muffin sold @ $2.00 = $56.00
+22 Fritos sold @ $1.00 = $22.00
+22 Mnt Dew sold @ $1.00 = $22.00
+16 Mnt Dew sold @ $4.00 = $64.00
+23 Coke sold @ $1.00 = $23.00
+20 Sprite sold @ $3.00 = $60.00
+18 Muffin sold @ $4.00 = $72.00
+21 Pi sold @ $4.00 = $84.00
+11 Mnt Dew sold @ $6.00 = $66.00
+28 Pepsi sold @ $1.00 = $28.00
+24 Taco sold @ $4.00 = $96.00
+23 Crackers sold @ $2.00 = $46.00
+15 Soup sold @ $5.00 = $75.00
+23 Crackers sold @ $2.00 = $46.00
+22 Cake sold @ $3.00 = $66.00
+9 Soup sold @ $7.00 = $63.00
+3 Coke sold @ $7.00 = $21.00
+8 Crackers sold @ $6.00 = $48.00
+22 Pepsi sold @ $2.00 = $44.00
+10 Fritos sold @ $7.00 = $70.00
+16 Fanta sold @ $4.00 = $64.00
+29 Fanta sold @ $1.00 = $29.00
+Total Sales = 1253.00

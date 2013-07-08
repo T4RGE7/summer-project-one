@@ -1,0 +1,9 @@
+Mon Jul 08 14:11:49 EDT 2013
+Machine 5
+Dispenser 9
+Item Purchased	Subtotal
+Sprite	$6.00
+
+Money in:	$8.00
+Total:	$6.00
+Change:	$2.00

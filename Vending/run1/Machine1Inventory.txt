@@ -1,0 +1,25 @@
+Machine 0
+Mon Jul 08 14:08:21 EDT 2013
+0)5,Pi @ $7.00,Calories: 300, Fat: 12, Sugar: 20, Carbs: 10
+Empty!
+2)16,Pepsi @ $7.00,Calories: 250, Fat: 20, Sugar: 20, Carbs: 10
+Empty!
+4)6,Muffin @ $6.00,Calories: 400, Fat: 20, Sugar: 10, Carbs: 8
+Empty!
+Empty!
+Empty!
+8)17,Fanta @ $6.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+Empty!
+Empty!
+Empty!
+Empty!
+Empty!
+Empty!
+Empty!
+Empty!
+17)5,Pi @ $6.00,Calories: 300, Fat: 12, Sugar: 20, Carbs: 10
+18)11,Sprite @ $7.00,Calories: 150, Fat: 14, Sugar: 17, Carbs: 12
+Empty!
+Empty!
+Empty!
+Empty!

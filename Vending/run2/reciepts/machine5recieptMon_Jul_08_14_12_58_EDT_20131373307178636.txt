@@ -1,0 +1,9 @@
+Mon Jul 08 14:12:58 EDT 2013
+Machine 5
+Dispenser 17
+Item Purchased	Subtotal
+Fritos	$7.00
+
+Money in:	$9.00
+Total:	$7.00
+Change:	$2.00

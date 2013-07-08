@@ -1,0 +1,26 @@
+Machine 3
+Mon Jul 08 14:20:50 EDT 2013
+0)20,Sprite @ $1.00,Calories: 150, Fat: 14, Sugar: 17, Carbs: 12
+1)27,Fanta @ $2.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+2)23,Coke @ $2.00,Calories: 200, Fat: 15, Sugar: 20, Carbs: 5
+3)20,Coke @ $6.00,Calories: 200, Fat: 15, Sugar: 20, Carbs: 5
+4)29,Cake @ $3.00,Calories: 400, Fat: 20, Sugar: 15, Carbs: 30
+5)21,Fanta @ $5.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+6)25,Cake @ $1.00,Calories: 400, Fat: 20, Sugar: 15, Carbs: 30
+7)23,Sprite @ $1.00,Calories: 150, Fat: 14, Sugar: 17, Carbs: 12
+8)28,Mnt Dew @ $5.00,Calories: 170, Fat: 19, Sugar: 12, Carbs: 18
+9)27,Cake @ $6.00,Calories: 400, Fat: 20, Sugar: 15, Carbs: 30
+10)24,Mnt Dew @ $3.00,Calories: 170, Fat: 19, Sugar: 12, Carbs: 18
+11)26,Cake @ $7.00,Calories: 400, Fat: 20, Sugar: 15, Carbs: 30
+12)26,Soup @ $6.00,Calories: 200, Fat: 10, Sugar: 10, Carbs: 15
+13)25,Fritos @ $4.00,Calories: 150, Fat: 8, Sugar: 12, Carbs: 9
+14)29,Fanta @ $1.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+15)27,Fritos @ $6.00,Calories: 150, Fat: 8, Sugar: 12, Carbs: 9
+16)23,Fanta @ $4.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+17)29,Coke @ $3.00,Calories: 200, Fat: 15, Sugar: 20, Carbs: 5
+18)23,Sunkist @ $5.00,Calories: 190, Fat: 14, Sugar: 7, Carbs: 23
+19)20,Coke @ $2.00,Calories: 200, Fat: 15, Sugar: 20, Carbs: 5
+20)22,Crackers @ $3.00,Calories: 50, Fat: 3, Sugar: 5, Carbs: 10
+21)27,Taco @ $6.00,Calories: 300, Fat: 15, Sugar: 2, Carbs: 3
+22)23,Cake @ $1.00,Calories: 400, Fat: 20, Sugar: 15, Carbs: 30
+23)24,Taco @ $6.00,Calories: 300, Fat: 15, Sugar: 2, Carbs: 3

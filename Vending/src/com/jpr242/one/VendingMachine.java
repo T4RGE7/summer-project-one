@@ -350,7 +350,7 @@ public class VendingMachine implements Serializable{
 				Dispenser temp = this.dispensers.get(i);
 				printer.println(this.quantitySold.get(i) + " " + temp.getName() + " sold @ $" + df.format(temp.getPrice()) + " = $" + df.format(temp.getPrice() * this.quantitySold.get(i)));
 			}
-			printer.println("Total Sales = " + df.format(this.totalSales));
+			printer.println("Total Sales = $" + df.format(this.totalSales));
 			printer.close();
 		} catch (IOException e) {
 			System.err.println("Unable to Write Contents to Text File.");

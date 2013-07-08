@@ -1,0 +1,26 @@
+Machine 1
+Mon Jul 08 14:15:49 EDT 2013
+0)29,Pi @ $4.00,Calories: 300, Fat: 12, Sugar: 20, Carbs: 10
+1)21,Soup @ $6.00,Calories: 200, Fat: 10, Sugar: 10, Carbs: 15
+2)22,Fanta @ $3.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+3)25,Muffin @ $1.00,Calories: 400, Fat: 20, Sugar: 10, Carbs: 8
+4)28,Fanta @ $6.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+5)28,Soup @ $2.00,Calories: 200, Fat: 10, Sugar: 10, Carbs: 15
+6)23,Crackers @ $1.00,Calories: 50, Fat: 3, Sugar: 5, Carbs: 10
+7)25,Sunkist @ $4.00,Calories: 190, Fat: 14, Sugar: 7, Carbs: 23
+8)23,Sunkist @ $6.00,Calories: 190, Fat: 14, Sugar: 7, Carbs: 23
+9)28,Crackers @ $3.00,Calories: 50, Fat: 3, Sugar: 5, Carbs: 10
+10)26,Pepsi @ $2.00,Calories: 250, Fat: 20, Sugar: 20, Carbs: 10
+11)25,Sunkist @ $3.00,Calories: 190, Fat: 14, Sugar: 7, Carbs: 23
+12)26,Fanta @ $2.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+13)27,Muffin @ $2.00,Calories: 400, Fat: 20, Sugar: 10, Carbs: 8
+14)23,Fritos @ $1.00,Calories: 150, Fat: 8, Sugar: 12, Carbs: 9
+15)28,Soup @ $5.00,Calories: 200, Fat: 10, Sugar: 10, Carbs: 15
+16)20,Mnt Dew @ $6.00,Calories: 170, Fat: 19, Sugar: 12, Carbs: 18
+17)27,Mnt Dew @ $3.00,Calories: 170, Fat: 19, Sugar: 12, Carbs: 18
+18)27,Fanta @ $3.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+19)22,Soup @ $3.00,Calories: 200, Fat: 10, Sugar: 10, Carbs: 15
+20)20,Sunkist @ $6.00,Calories: 190, Fat: 14, Sugar: 7, Carbs: 23
+21)20,Cake @ $4.00,Calories: 400, Fat: 20, Sugar: 15, Carbs: 30
+22)24,Fanta @ $1.00,Calories: 250, Fat: 10, Sugar: 10, Carbs: 15
+23)27,Mnt Dew @ $2.00,Calories: 170, Fat: 19, Sugar: 12, Carbs: 18

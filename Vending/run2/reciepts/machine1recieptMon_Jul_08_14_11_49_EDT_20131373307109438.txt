@@ -1,0 +1,9 @@
+Mon Jul 08 14:11:49 EDT 2013
+Machine 1
+Dispenser 12
+Item Purchased	Subtotal
+Coke	$5.00
+
+Money in:	$6.00
+Total:	$5.00
+Change:	$1.00
